@@ -1,0 +1,83 @@
+@import "../../style.scss";
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 5ch;
+    @include themify($themes) {
+    .my-post {
+        display: flex;
+        flex-direction: column;
+        gap: 2ch;
+        background-color: themed('bg');
+        padding: 3ch;
+        border-radius: 8px;
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow : 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        .post-text {
+            display: flex;
+            gap: 2ch;
+            img {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: top;
+            }
+            textarea {
+                background-color: themed('bg');
+                border: none;
+                border-radius: 5px;
+                color: themed('textColor');
+                padding: 2ch;
+                width: 90%;
+                min-height: 10vh;
+                &::placeholder {
+                    color: themed('textColor');
+                    font-family: "Open Sans", sans-serif;
+                    font-size: 14px;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        .message {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .options {
+                display: flex;
+                gap: 2ch;
+                justify-content: center;
+                align-items: center;
+                .icon {
+                    height: 35px;
+                    width: 35px;
+                }
+            }
+            .send-msg {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 35px;
+                    width: 80px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    background-color: rgba(49, 49, 179, 0.755);
+                    font-weight: 600;
+                    color: white;
+                    &:hover {
+                        background-color: rgba(49, 49, 179, 0.633);
+                    }
+                }
+            }
+        }
+    }
+}
+}

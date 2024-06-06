@@ -1,0 +1,20 @@
+@import "../../style.scss";
+.home {
+    @include themify($themes) {
+    background-color: themed('bgSoft');
+    color: themed('textColor');
+    width: 60vw;
+    padding: 3.5ch 7ch;
+    display: flex;
+    flex-direction: column;
+    gap: 4ch;
+    @include mobile {
+        padding: 10px;
+        width: 100%;
+    }
+    @include tablet {
+        padding: 10px;
+        width: 100%;
+    }
+}
+}

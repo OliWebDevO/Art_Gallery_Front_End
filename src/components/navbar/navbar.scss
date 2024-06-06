@@ -1,0 +1,82 @@
+@import "../../style.scss";
+
+.navbar {
+    @include themify($themes) {
+    .icon {
+        cursor: pointer;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 50px;
+    border-bottom: 1px solid themed('border');
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    background-color: themed("bg");
+    color: themed("textColor");
+    .left {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        .logo {
+            color: themed("logo");
+            font-weight: bold;
+            font-size: 22px;
+        }
+        .search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid themed("border");
+            border-radius: 5px;
+            padding: 5px;
+            input {
+                border: none;
+                width: 500px;
+                background-color: transparent;
+                color: themed("textColor");
+                &:focus {
+                    outline: none;
+                }
+                @include mobile {
+                    display: none;
+                }
+                @include tablet {
+                    display: none;
+                }
+                @include smallscreen {
+                    width: 200px;
+                }
+            }
+        }
+    }
+    .right {
+        @include mobile {
+            display: none;
+        }
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        .user {
+            display: flex;
+            align-items: center;
+            gap:10px;
+            text-decoration: none;
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: center;
+            }
+            span{
+                font-size: 14px;
+                font-weight: 500;
+                color: themed('textColor');
+            }
+        }
+    }
+}   
+}

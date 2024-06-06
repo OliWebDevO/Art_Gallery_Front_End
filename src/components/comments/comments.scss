@@ -1,0 +1,87 @@
+@import "../../style.scss";
+
+.comments {
+    @include themify($themes) {
+    display: flex;
+    flex-direction: column;
+    gap: 3ch;
+    padding-top: 3ch;
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .write-comment {
+        display: flex;
+        gap: 3ch;
+        img {
+            flex: 1;
+        }
+        input {
+            flex: 5;
+            background-color: themed('bg');
+            border: 1px solid themed('border');
+            color: themed('textColor');
+            padding-left: 2ch;
+            &:focus{
+                outline: none;
+            }
+        }
+        button {
+            flex: 1;
+            background-color: rgba(49, 49, 179, 0.755);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            &:hover {
+                background-color: rgba(49, 49, 179, 0.633);
+            }
+        }
+    }
+    .comment {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 3ch;
+        p {
+            margin: 0;
+        }
+        img {
+            flex: 1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .comment-content {
+            flex: 5;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5ch;
+
+            .comment-user {
+                font-weight: 500;
+                font-size: 2ch;
+                text-decoration: none;
+                color: themed('textColor');
+            }
+            p {
+                font-size: 1.8ch;
+                text-align: justify;
+                line-height: 2.5ch;
+            }
+        }
+        .comment-date {
+            flex: 1;
+            p {
+                font-size: 1.5ch;
+            }
+        }
+    }
+}
+}

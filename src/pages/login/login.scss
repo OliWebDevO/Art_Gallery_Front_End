@@ -1,0 +1,143 @@
+@import "../../style.scss";
+.login {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: rgba(41, 13, 94, 0.472);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mobile {
+        padding: 0 20px;
+        background:linear-gradient(rgba(41, 13, 94, 0.472), rgba(0, 0, 0, 0.41)), url('https://images.pexels.com/photos/1927595/pexels-photo-1927595.jpeg') center / cover;
+    }
+    @include tablet {
+        padding: 0 20px;
+        background:linear-gradient(rgba(41, 13, 94, 0.472), rgba(0, 0, 0, 0.41)), url('https://images.pexels.com/photos/1927595/pexels-photo-1927595.jpeg') center / cover;
+    }
+   .card  {
+    display: flex;
+    width: 50%;
+    height: 60vh;
+    border-radius: 10px;
+    background-color: white;
+    color: white;
+    display: flex;
+    @include mobile {
+        width: 100%;
+    }
+    @include tablet {
+        width: 100%;
+    }
+    .left {
+        @include mobile {
+            display: none;
+        }
+        @include tablet {
+            display: none;
+        }
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        background:linear-gradient(rgba(41, 13, 94, 0.472), rgba(0, 0, 0, 0.41)), url('https://images.pexels.com/photos/1927595/pexels-photo-1927595.jpeg') center / cover;
+        
+        border-radius: 10px 0 0 10px;
+        padding: 50px;
+        h1{
+            font-size: 85px;
+            margin-bottom: 10px;
+            margin-top:0;
+            line-height: 1;
+            font-family: "Playfair Display", serif;
+            letter-spacing: 5px;
+            font-weight: 800;
+        }
+
+        span {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        button {
+            padding: 8px 40px;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: rgb(41, 13, 94);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            &:hover {
+                background-color: rgb(217, 217, 217);
+            }
+        }
+    }
+    .right {
+        flex: 1;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        h1{
+            color:rgb(41, 13, 94) ;
+            margin-bottom: 50px;
+            margin-top: 70px;
+            @include mobile {
+                margin-top: 30px;
+            }
+            @include tablet {
+                margin-top: 30px;
+            }
+        }
+        form {
+            .register-btn {
+                display: none;
+                @include mobile {
+                   display: flex;
+                   justify-content: center;
+                   width: 120px;
+                   margin-top: 10px;
+                }
+                @include tablet {
+                   display: flex;
+                   justify-content: center;
+                   width: 120px;
+                   margin-top: 10px;
+                }
+                
+            }
+            display: flex;
+            flex-direction: column;
+            input {
+                margin-bottom: 40px;
+                height: 30px;
+                border: none;
+                border-bottom: 1px solid lightgray;
+                outline: none;
+                &:focus {
+                   border: 2px solid rgba(41, 13, 94, 0.848);
+                   border-radius: 3px;
+                }
+            }
+
+            button {
+                padding: 8px 40px;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 600;
+                letter-spacing: 1px;
+                background-color: rgba(41, 13, 94, 0.848);
+                color: white;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgba(41, 13, 94, 0.751)
+                }
+            }
+        }
+    }
+   }
+}

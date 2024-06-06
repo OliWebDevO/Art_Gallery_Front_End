@@ -1,0 +1,86 @@
+@import "../../style.scss";
+
+.leftbar {
+    @include themify($themes) {
+    width: 15vw;
+    position: sticky;
+    top: 70.5px;
+    height: calc(100vh - 70.5px);
+    overflow: scroll;
+    background-color: themed("bgSoft");
+    color : themed("textColor");
+    padding-bottom: 10px;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    @include mobile {
+        display: none;
+    }
+    @include tablet {
+        display: none;
+    }
+    @include smallscreen {
+        display: none;
+    }
+    .container {
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow : 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        margin-left: 10px;
+        background-color: themed('bg');
+        padding:  0 20px;
+        border-radius: 8px;
+        hr {
+            border: none;
+            height: 0.5px;
+            background-color: themed('border');
+            width: 60%;
+            margin-right: 40%;
+        }
+        .menu {
+            padding-bottom: 10px;
+            .user {
+                margin-top: 30px;
+                padding-top: 20px;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 14px;
+                text-decoration: none;
+                color: themed('textColor');
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+                span {
+                    font-weight: 500;
+                }
+            }
+            .item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 14px;
+                margin-bottom: 20px;
+                .item-icon {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            .first-item {
+                margin-top: 30px;
+            }
+            .last-item{
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+}

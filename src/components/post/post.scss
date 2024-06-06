@@ -1,0 +1,83 @@
+@import "../../style.scss";
+
+.post {
+    @include themify($themes) {
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow : 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    background-color: themed("bg");
+    padding: 3ch;
+    border-radius: 8px;
+    .post-head{
+        display: flex;
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            margin-right: 2ch;
+            cursor: pointer;
+        }
+        .user-infos {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .user-info {
+                display: flex;
+                flex-direction: column;
+                .user-link {
+                    text-decoration: none;
+                    color: themed("textColor");
+                    font-size: 1.8ch;
+                    font-weight: 500;
+                }
+                .small {
+                    font-size: 1.3ch;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+            .icon {
+                cursor: pointer;
+            }
+        }
+    }
+    .post-content {
+        margin-top: 3ch;
+        img {
+            width: 100%;
+            margin-top: 1ch;
+            margin-bottom: 1ch;
+        }
+        p {
+            line-height: 2.8ch;
+            text-align: justify;
+            font-size: 1.8ch;
+        }
+        .post-reactions {
+            margin-top: 1ch;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 2ch;
+            span {
+                color: themed('textColor');
+                text-decoration: none;
+                font-size: 1.4ch;
+                cursor: pointer;
+            }
+            .icon {
+                cursor: pointer;
+            }
+            .post-like {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1ch;
+            }
+        }
+    }
+}
+}
