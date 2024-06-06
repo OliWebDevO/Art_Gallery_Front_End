@@ -1,14 +1,28 @@
-import { useContext } from 'react';
-import './login.scss'
-// import img1 from '../img/art1.jpeg'
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/authContext';
+import './login.scss'
 
 const Login = () => {
 
+    const [inputs, setInputs] = useState({
+        username:"",
+        password:"",
+    })
+    const [error, setError] = useState(null)
+
+    const handleChange = (e) => {
+        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+    
     const {login} = useContext(AuthContext);
-    const handleLogin = () => {
-        login();
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        try {
+            await login(inputs);
+        } catch (err){
+            setError(err.response.data)
+        }
     }
 
     return (
@@ -26,11 +40,12 @@ const Login = () => {
                 <div className="right">
                     <h1>Login</h1>  
                     <form action="">
-                        <input type="text" placeholder='Username'/>
-                        <input type="password" placeholder='Password'/>
-                        <Link to ={'/'}>
+                        <input type="text" placeholder='Username' name='username' onChange={handleChange}/>
+                        <input type="password" placeholder='Password' name='password' onChange={handleChange}/>
+                        {error && <div className='error'>{error}</div>}
+                        {/* <Link to ={'/'}> */}
                         <button onClick={handleLogin}>Login</button>
-                        </Link>
+                        {/* </Link> */}
                         <Link to={'/register'}>
                         <button className='register-btn'>Register</button>
                         </Link>

@@ -93,6 +93,10 @@
             }
         }
         form {
+            .error {
+                color: black;
+                width: 300px;
+            }
             .register-btn {
                 display: none;
                 @include mobile {
