@@ -96,6 +96,11 @@
             justify-content: center;
             width: 120px;
             margin-top: 10px;
+            .error {
+                color: black;
+                width: 300px;
+                margin-bottom: 20px;
+            }
             .login-btn {
                 display: none;
                 @include mobile {
