@@ -4,9 +4,14 @@ import ImageIcon from '@mui/icons-material/Image';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import { useQuery } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../context/authContext';
+
+
 
 const Posts = () => {
 
+  // React Query pour les posts
   const { isPending, error, data } = useQuery({
     queryKey: ['posts'],
     queryFn: () =>
@@ -15,23 +20,34 @@ const Posts = () => {
       })
   })
   
+  //State pour le share
+  const {currentUser} = useContext(AuthContext)
+
+  const [file, setFile] = useState(null)
+  const [desc, setDesc] = useState("")
+  const handleClick = (e) => {
+    e.preventDefault()
+  }
     return (
         <div className="posts">
-            {/* <div className="my-post">
+            <div className="my-post">
               <div className="post-text">
-                <img src="https://images.pexels.com/photos/4927361/pexels-photo-4927361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-                <textarea name="" id="" placeholder=" What's on your mind ? "></textarea>
+                <img src={currentUser.profilePic} alt="" />
+                <textarea name="" id="" placeholder={` What's on your mind ? ${currentUser.name}`} onChange={(e) => setDesc(e.target.value)}></textarea>
               </div>
               <div className="message">
                 <div className="options">
-                  <ImageIcon className='icon'/>
-                  <CameraAltIcon className='icon'/>
+                  <input type="file" name="" id="file" style={{display:"none"}} onChange={(e) => setFile(e.target.files[0])}/>
+                  <label htmlFor="file">
+                    <ImageIcon className='icon'/>
+                  </label>
+                  {/* <CameraAltIcon className='icon'/> */}
                 </div>
                 <div className="send-msg">
-                  <button>Send</button>
+                  <button onClick={handleClick}>Share</button>
                 </div>
               </div>
-            </div> */}
+            </div>
 
             { error 
             ? 'Something went wront' 
