@@ -16,31 +16,49 @@
         box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
         .post-text {
             display: flex;
-            gap: 2ch;
-            img {
-                height: 40px;
-                width: 40px;
-                border-radius: 50%;
-                object-fit: cover;
-                object-position: top;
-            }
-            textarea {
-                background-color: themed('bg');
-                border: none;
-                border-radius: 5px;
-                color: themed('textColor');
-                padding: 2ch;
-                width: 90%;
-                min-height: 10vh;
-                &::placeholder {
+            justify-content: space-between;
+            .left {
+                display: flex;
+                gap: 2ch;
+                min-width: 100ch;
+                img {
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: top;
+                    cursor: pointer;
+                }
+                textarea {
+                    background-color: themed('bg');
+                    border: none;
+                    border-radius: 5px;
                     color: themed('textColor');
-                    font-family: "Open Sans", sans-serif;
-                    font-size: 14px;
-                }
-                &:focus {
-                    outline: none;
+                    padding: 2ch;
+                    width: 90%;
+                    min-height: 10vh;
+                    &::placeholder {
+                        color: themed('textColor');
+                        font-family: "Open Sans", sans-serif;
+                        font-size: 14px;
+                    }
+                    &:focus {
+                        outline: none;
+                    }
                 }
             }
+            .right {
+                display: flex;
+                
+                .file {
+                    max-width: 30ch;
+                    max-height: 30ch;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 8px;
+                }
+            }
+           
         }
         .message {
             display: flex;
@@ -54,6 +72,7 @@
                 .icon {
                     height: 35px;
                     width: 35px;
+                    cursor: pointer;
                 }
             }
             .send-msg {

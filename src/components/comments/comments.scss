@@ -79,6 +79,8 @@
         .comment-date {
             flex: 1;
             p {
+                display: flex;
+                justify-content: end;
                 font-size: 1.5ch;
             }
         }

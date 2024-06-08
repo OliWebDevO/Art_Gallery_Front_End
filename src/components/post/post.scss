@@ -27,10 +27,12 @@
             .user-info {
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
+                gap: 0.5ch;
                 .user-link {
                     text-decoration: none;
                     color: themed("textColor");
-                    font-size: 1.8ch;
+                    font-size: 2ch;
                     font-weight: 500;
                 }
                 .small {
@@ -48,8 +50,12 @@
         margin-top: 3ch;
         img {
             width: 100%;
+            max-height: 80ch;
+            object-fit: cover;
+            object-position: center;
             margin-top: 1ch;
             margin-bottom: 1ch;
+            border-radius: 5px;
         }
         p {
             line-height: 2.8ch;
