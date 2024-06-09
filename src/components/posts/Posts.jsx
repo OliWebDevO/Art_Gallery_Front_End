@@ -19,7 +19,7 @@ const Posts = () => {
         return res.data
       })
   })
-
+  
   //React Query pour le share
   const queryClient = useQueryClient()
    // Mutations
@@ -68,6 +68,7 @@ const Posts = () => {
             <div className="my-post">
               <div className="post-text">
                 <div className="left">
+                  
                   <img src={currentUser.profilePic} alt="" />
                   <textarea name="" id="" value={desc} placeholder={` What's on your mind ? ${currentUser.name}`} onChange={(e) => setDesc(e.target.value)}></textarea>
                 </div>
@@ -94,7 +95,7 @@ const Posts = () => {
             : isPending 
             ? 'Loading' 
             : data.map((post) => <Post post={post} key={post.id}/>)}
-
+            
         </div>
     )
 }

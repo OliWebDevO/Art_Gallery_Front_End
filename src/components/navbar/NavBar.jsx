@@ -35,7 +35,7 @@ const NavBar = () => {
                 <PermIdentityIcon className='icon'/>
                 <MailOutlineIcon className='icon'/>
                 <NotificationsNoneIcon className='icon'/>      
-                <Link className="user" to={`/profile/1`}>
+                <Link className="user" to={`/profile/`+ currentUser.id}>
                     <img src={currentUser.profilePic} alt="" />
                     <span>{currentUser.name}</span>
                 </Link>

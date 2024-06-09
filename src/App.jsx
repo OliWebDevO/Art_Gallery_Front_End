@@ -19,7 +19,7 @@ import {
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
 //React Query import
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 
 
@@ -74,6 +74,7 @@ const ProtectedRoute = ({children}) => {
           element:<Home/>
         },
         {
+          // path:"/profile/" + currentUser.id,
           path:"/profile/:id",
           element:<Profile/>
         }

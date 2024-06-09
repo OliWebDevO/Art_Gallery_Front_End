@@ -8,24 +8,46 @@ import ShareIcon from '@mui/icons-material/Share';
 import { Link } from 'react-router-dom';
 import Comments from '../comments/Comments';
 import moment from "moment";
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { AuthContext } from '../../context/authContext';
+import { makeRequest } from '../../axios';
 
-const Post = ({post}) => {
+const Post = ({ post }) => {
     
     const [commentOpen, setCommentOpen] = useState(false);
+
 
     const {currentUser} = useContext(AuthContext)
     
      // React Query pour les likes
      const { isPending, error, data } = useQuery({
+        initialData:[],
         queryKey: ['likes', post.id],
         queryFn: () =>
         makeRequest.get("/likes?postId=" + post.id).then((res) => {
             return res.data;
         })
     });
-   
+
+    //React Query
+    const queryClient = useQueryClient()
+    // Mutations
+    const mutation = useMutation({
+    mutationFn: (liked) => {
+        if(liked) return makeRequest.delete('/likes?postId=' + post.id)
+        return makeRequest.post('/likes', { postId: post.id })
+    },
+    onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries({ queryKey: ['likes'] })
+    },
+    })
+
+
+    const handleLike = () => {
+        mutation.mutate(data.includes(currentUser.id))
+    }
+
     return (
         <div className="post">
             <div className="post-head">
@@ -49,8 +71,12 @@ const Post = ({post}) => {
                 <img src={'./upload/' + post.img} alt="" />
                 <div className="post-reactions">
                     <div className="post-like">
-                        {/* {like ? <FavoriteIcon className='icon' style={{color:"red"}}/> : <FavoriteBorderIcon className='icon'/>} */}
-                        <span onClick={()=> setLike(!like)} href=""> Likes</span>
+                        {isPending ? "Loading" : data.includes(currentUser.id) ? (
+                        <FavoriteIcon className='icon' style={{color:"red"}} onClick={handleLike}/>
+                        ) : ( 
+                        <FavoriteBorderIcon className='icon'onClick={handleLike}/>
+                        )}
+                        <span>{data.length} like{data.length >=2 && "s"}</span>
                     </div>
                     <div className="post-like">
                         <CommentIcon onClick={()=>setCommentOpen(!commentOpen)} className='icon'/>

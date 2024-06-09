@@ -53,7 +53,7 @@ const Comments = ({postId}) => {
             {isPending
               ? "Loading"
               : data.map((comment) => (
-                <div className="comment">
+                <div className="comment" key={comment.id}>
                     <div className="comment-img">
                         <Link className='comment-user' to={`/profile/${comment.userId}`}>
                             <img src={comment.profilePic} alt="" />
