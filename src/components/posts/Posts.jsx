@@ -9,13 +9,13 @@ import { AuthContext } from '../../context/authContext';
 
 
 
-const Posts = () => {
+const Posts = ({userId}) => {
 
   // React Query pour les posts
   const { isPending, error, data } = useQuery({
     queryKey: ['posts'],
     queryFn: () =>
-      makeRequest.get("/posts").then((res) => {
+      makeRequest.get("/posts?userId="+ userId).then((res) => {
         return res.data
       })
   })
@@ -68,7 +68,6 @@ const Posts = () => {
             <div className="my-post">
               <div className="post-text">
                 <div className="left">
-                  
                   <img src={currentUser.profilePic} alt="" />
                   <textarea name="" id="" value={desc} placeholder={` What's on your mind ? ${currentUser.name}`} onChange={(e) => setDesc(e.target.value)}></textarea>
                 </div>
