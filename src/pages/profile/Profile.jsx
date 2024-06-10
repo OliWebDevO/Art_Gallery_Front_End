@@ -1,7 +1,7 @@
 import Post from '../../components/post/Post';
 import Posts from '../../components/posts/Posts';
 import './profile.scss'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import {AuthContext} from '../../context/authContext'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
@@ -22,10 +22,14 @@ import imgMiniGallery6 from '../../assets/gallery/gallery40.jpeg'
 import { useLocation } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
+import Update from '../../components/update/Update';
 
 const Profile = () => {
 
     const {currentUser} = useContext(AuthContext)
+
+    //Update part
+    const [openUpdate, setOpenUpdate] = useState(false)
 
     //Cherche le numéro de profil dans l'url
     const userId = parseInt(useLocation().pathname.split("/")[2])
@@ -70,11 +74,11 @@ const Profile = () => {
     return (
         <div className='profile'>
             {isPending ? "Loading " :
-            <>
+            (<>
                 <div className="profile-container">
                 <div className="profile-banner">
-                    <img className='banner-pic' src={data.coverPic} alt="" />
-                    <img className='profile-pic' src={data.profilePic} alt="" />
+                    <img className='banner-pic' src={"/upload/" + data.coverPic} alt="" />
+                    <img className='profile-pic' src={"/upload/" + data.profilePic} alt="" />
                 </div>
                 <div className="profile-infos">
                     <div className="profile-title">
@@ -85,7 +89,7 @@ const Profile = () => {
                             {relationshipIsPending ?
                             "Loading" 
                             : userId === currentUser.id ? (
-                            <button>Update</button>
+                            <button onClick={()=>setOpenUpdate(true)}>Update</button>
                             ) : (
                             <button onClick={handleFollow}>
                                 {relationshipData.includes(currentUser.id) 
@@ -136,7 +140,8 @@ const Profile = () => {
                 <Posts userId={userId}/>
                 </div>
             </div>
-            </>}
+            </>)}
+            {openUpdate && <Update setOpenUpdate={setOpenUpdate} user={data}/>}
         </div>
     )
 }

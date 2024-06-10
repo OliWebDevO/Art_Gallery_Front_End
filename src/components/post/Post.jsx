@@ -15,7 +15,7 @@ import { makeRequest } from '../../axios';
 const Post = ({ post }) => {
     
     const [commentOpen, setCommentOpen] = useState(false);
-
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const {currentUser} = useContext(AuthContext)
     
@@ -31,16 +31,16 @@ const Post = ({ post }) => {
 
     //React Query
     const queryClient = useQueryClient()
-    // Mutations
+    // Mutations for likes
     const mutation = useMutation({
-    mutationFn: (liked) => {
-        if(liked) return makeRequest.delete('/likes?postId=' + post.id)
-        return makeRequest.post('/likes', { postId: post.id })
-    },
-    onSuccess: () => {
-        // Invalidate and refetch
-        queryClient.invalidateQueries({ queryKey: ['likes'] })
-    },
+        mutationFn: (liked) => {
+            if(liked) return makeRequest.delete('/likes?postId=' + post.id)
+            return makeRequest.post('/likes', { postId: post.id })
+        },
+        onSuccess: () => {
+            // Invalidate and refetch
+            queryClient.invalidateQueries({ queryKey: ['likes'] })
+        },
     })
 
 
@@ -48,11 +48,25 @@ const Post = ({ post }) => {
         mutation.mutate(data.includes(currentUser.id))
     }
 
+    // Mutations for post delete
+    const deleteMutation = useMutation({
+        mutationFn: (postId) => {
+            return makeRequest.delete('/posts/'+ postId)
+        },
+        onSuccess: () => {
+            // Invalidate and refetch
+            queryClient.invalidateQueries({ queryKey: ['posts'] })
+        },
+    })
+    const handleDelete = () => {
+        deleteMutation.mutate(post.id)
+    }
+
     return (
         <div className="post">
             <div className="post-head">
                 <Link className='user-link' to={`/profile/${post.userId}`}>
-                    <img className='user-img' src={post.profilePic} alt="" />
+                    <img className='user-img' src={'/upload/' + post.profilePic} alt="" />
                 </Link>
                 <div className="user-infos">
                     <div className="user-info">
@@ -62,8 +76,10 @@ const Post = ({ post }) => {
                         <p className='small'>{moment(post.createdAt).fromNow()}</p>
                     </div>
                     <div className="user-infos-icon">
-                        <MoreHorizIcon className='icon'/>
+                        <MoreHorizIcon onClick={()=>setMenuOpen(!menuOpen)} className='icon'/>
                     </div>
+                    {menuOpen && post.userId === currentUser.id && <button onClick={handleDelete}>Delete</button>}
+                    
                 </div>
             </div>
             <div className="post-content">

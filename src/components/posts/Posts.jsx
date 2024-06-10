@@ -68,7 +68,7 @@ const Posts = ({userId}) => {
             <div className="my-post">
               <div className="post-text">
                 <div className="left">
-                  <img src={currentUser.profilePic} alt="" />
+                  <img src={'/upload/' + currentUser.profilePic} alt="" />
                   <textarea name="" id="" value={desc} placeholder={` What's on your mind ? ${currentUser.name}`} onChange={(e) => setDesc(e.target.value)}></textarea>
                 </div>
                 <div className="right">

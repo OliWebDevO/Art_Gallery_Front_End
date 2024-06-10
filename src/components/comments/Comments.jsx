@@ -20,6 +20,8 @@ const Comments = ({postId}) => {
         })
     });
 
+    
+
     //React Query
     const queryClient = useQueryClient()
     // Mutations
@@ -40,12 +42,11 @@ const Comments = ({postId}) => {
         setDesc("")
       }
 
-
     return (
         <div className="comments">
             <div className="write-comment">
                 <div className="write-img">
-                    <img src={currentUser.profilePic} alt="" />
+                    <img src={'/upload/' + currentUser.profilePic} alt="" />
                 </div>
                 <input type="text" value={desc} name="" id="" placeholder='Write a comment' onChange={e => setDesc(e.target.value)} />
                 <button onClick={handleClick}>Send</button>
@@ -56,7 +57,7 @@ const Comments = ({postId}) => {
                 <div className="comment" key={comment.id}>
                     <div className="comment-img">
                         <Link className='comment-user' to={`/profile/${comment.userId}`}>
-                            <img src={comment.profilePic} alt="" />
+                            <img src={'/upload/' + comment.profilePic} alt="" />
                         </Link>
                     </div>
                     <div className="comment-content">         
