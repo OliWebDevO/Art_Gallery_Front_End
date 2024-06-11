@@ -92,7 +92,9 @@
                     font-weight: 600;
                     padding: 1ch 2ch;
                     cursor: pointer;
+                    transition: .3s ease-in-out;
                     &:hover {
+                        transition: .3s ease-in-out;
                         background-color: rgba(49, 49, 179, 0.55);
                     }
                 }

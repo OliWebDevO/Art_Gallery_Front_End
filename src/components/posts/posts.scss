@@ -30,6 +30,11 @@
                     object-fit: cover;
                     object-position: top;
                     cursor: pointer;
+                    transition: .3s ease-in-out;
+                    &:hover {
+                        transition: .3s ease-in-out;
+                        opacity: 0.8;
+                    }
                 }
                 textarea {
                     background-color: themed('bg');
@@ -77,6 +82,11 @@
                     height: 35px;
                     width: 35px;
                     cursor: pointer;
+                    transition: .3s ease-in-out;
+                    &:hover {
+                        transition: .3s ease-in-out;
+                        scale: 1.15;
+                    }
                 }
             }
             .send-msg {
@@ -95,7 +105,9 @@
                     background-color: rgba(49, 49, 179, 0.755);
                     font-weight: 600;
                     color: white;
+                    transition: .3s ease-in-out;
                     &:hover {
+                        transition: .3s ease-in-out;
                         background-color: rgba(49, 49, 179, 0.633);
                     }
                 }

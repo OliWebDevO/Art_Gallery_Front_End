@@ -29,7 +29,9 @@ const NavBar = () => {
                     <Link to={"/"} style={{textDecoration:"none", color:"black"}}>
                         <div className="logo">Art Gallery</div>
                     </Link>
-                    <HomeOutlinedIcon className='icon'/>
+                    <Link to={"/"} style={{textDecoration:"none", color:"black"}}>
+                        <HomeOutlinedIcon className='icon'/>
+                    </Link>
                     {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
                     <GridViewIcon className='icon'/>
                     <div className="search">
@@ -38,10 +40,12 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <PermIdentityIcon className='icon'/>
+                    <Link className="user" style={{textDecoration:"none", color:"black"}} to={`/profile/`+ currentUser.id}>
+                        <PermIdentityIcon className='icon'/>
+                    </Link>
                     <MailOutlineIcon className='icon'/>
                     <NotificationsNoneIcon className='icon'/>
-                    <Link className="user" to={`/profile/`+ currentUser.id}>
+                    <Link className="user"  to={`/profile/`+ currentUser.id}>
                         <img src={'/upload/' + currentUser.profilePic} alt="" />
                         <span>{currentUser.name}</span>
                     </Link>
