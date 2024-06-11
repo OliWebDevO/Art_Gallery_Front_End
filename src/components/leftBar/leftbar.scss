@@ -4,8 +4,8 @@
     @include themify($themes) {
     width: 15vw;
     position: sticky;
-    top: 70.5px;
-    height: calc(100vh - 70.5px);
+    top: 70px;
+    height: calc(100vh - 70px);
     overflow: scroll;
     background-color: themed("bgSoft");
     color : themed("textColor");

@@ -24,6 +24,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            .user-infos-icon {
+                .icon {
+                    cursor: pointer;
+                    transition: .5s ease-in-out;
+                }
+                .iconRotation {
+                    transition: .3s ease-in-out;
+                    transform: rotate(90deg)
+                }
+                .icon-btn {
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                    // transition: .6s ease-in-out;
+                    // &:hover{
+                    //     transition: .6s ease-in-out;
+                    //     transform: rotate(360deg)
+                        
+                    // }
+                }   
+            }
+            
             .user-info {
                 display: flex;
                 flex-direction: column;

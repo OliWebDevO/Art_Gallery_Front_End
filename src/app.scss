@@ -1,0 +1,9 @@
+@import "./style.scss";
+body {
+    @include themify($themes) {
+        .app{
+            
+            background-color: themed('bgSoft')
+        }
+
+    }}

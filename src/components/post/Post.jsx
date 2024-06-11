@@ -5,6 +5,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import ShareIcon from '@mui/icons-material/Share';
+import ClearIcon from '@mui/icons-material/Clear';
 import { Link } from 'react-router-dom';
 import Comments from '../comments/Comments';
 import moment from "moment";
@@ -14,10 +15,16 @@ import { makeRequest } from '../../axios';
 
 const Post = ({ post }) => {
     
+    const {currentUser} = useContext(AuthContext)
+    const [rotation, setRotation] = useState("")
     const [commentOpen, setCommentOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const {currentUser} = useContext(AuthContext)
+    const handleClickParamsPost = () => {
+        setRotation("iconRotation")
+        rotation === "iconRotation" && setRotation("")
+        setMenuOpen(!menuOpen)
+    }
     
      // React Query pour les likes
      const { isPending, error, data } = useQuery({
@@ -76,10 +83,9 @@ const Post = ({ post }) => {
                         <p className='small'>{moment(post.createdAt).fromNow()}</p>
                     </div>
                     <div className="user-infos-icon">
-                        <MoreHorizIcon onClick={()=>setMenuOpen(!menuOpen)} className='icon'/>
+                        <MoreHorizIcon onClick={handleClickParamsPost} className={rotation + " icon"}/>
+                        {menuOpen && post.userId === currentUser.id && <button onClick={handleDelete} className='icon-btn'><ClearIcon/></button>}
                     </div>
-                    {menuOpen && post.userId === currentUser.id && <button onClick={handleDelete}>Delete</button>}
-                    
                 </div>
             </div>
             <div className="post-content">

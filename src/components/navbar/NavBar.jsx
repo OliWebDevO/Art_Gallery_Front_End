@@ -11,35 +11,42 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 import { AuthContext } from '../../context/authContext';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 const NavBar = () => {
 
     const {toggle, darkMode} = useContext(DarkModeContext)
     const {currentUser} = useContext(AuthContext)
 
+    const handleLogout = () => {
+        localStorage.clear();
+        location.reload()
+    }
+
     return (
-        <div className='navbar'>
-            <div className="left">
-                <Link to={"/"} style={{textDecoration:"none", color:"black"}}>
-                    <div className="logo">Art Gallery</div>
-                </Link>
-                <HomeOutlinedIcon className='icon'/>
-                {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
-                <GridViewIcon className='icon'/>
-                <div className="search">
-                    <SearchIcon/>
-                    <input type="text" name="" id="" placeholder='Search...' />
+        <div className="nav-bg">
+            <div className='navbar'>
+                <div className="left">
+                    <Link to={"/"} style={{textDecoration:"none", color:"black"}}>
+                        <div className="logo">Art Gallery</div>
+                    </Link>
+                    <HomeOutlinedIcon className='icon'/>
+                    {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
+                    <GridViewIcon className='icon'/>
+                    <div className="search">
+                        <SearchIcon/>
+                        <input type="text" name="" id="" placeholder='Search...' />
+                    </div>
                 </div>
-            </div>
-            <div className="right">
-                <PermIdentityIcon className='icon'/>
-                <MailOutlineIcon className='icon'/>
-                <NotificationsNoneIcon className='icon'/>      
-                <Link className="user" to={`/profile/`+ currentUser.id}>
-                    <img src={'/upload/' + currentUser.profilePic} alt="" />
-                    <span>{currentUser.name}</span>
-                </Link>
-                
+                <div className="right">
+                    <PermIdentityIcon className='icon'/>
+                    <MailOutlineIcon className='icon'/>
+                    <NotificationsNoneIcon className='icon'/>
+                    <Link className="user" to={`/profile/`+ currentUser.id}>
+                        <img src={'/upload/' + currentUser.profilePic} alt="" />
+                        <span>{currentUser.name}</span>
+                    </Link>
+                    <LogoutIcon className='icon' onClick={handleLogout}/>
+                </div>
             </div>
         </div>
     )
