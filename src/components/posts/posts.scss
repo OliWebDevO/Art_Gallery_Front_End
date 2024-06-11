@@ -20,10 +20,12 @@
             .left {
                 display: flex;
                 gap: 2ch;
-                min-width: 100ch;
+                min-width: 80%;
                 img {
-                    height: 40px;
-                    width: 40px;
+                    min-height: 40px;
+                    min-width: 40px;
+                    max-height: 40px;
+                    max-width: 40px;
                     border-radius: 50%;
                     object-fit: cover;
                     object-position: top;
@@ -37,6 +39,8 @@
                     padding: 2ch;
                     width: 90%;
                     min-height: 10vh;
+                    text-decoration: none;
+                    resize: none;
                     &::placeholder {
                         color: themed('textColor');
                         font-family: "Open Sans", sans-serif;
@@ -51,8 +55,8 @@
                 display: flex;
                 
                 .file {
-                    max-width: 30ch;
-                    max-height: 30ch;
+                    max-width: 80px;
+                    max-height: 80px;
                     object-fit: cover;
                     object-position: center;
                     border-radius: 8px;
