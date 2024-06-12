@@ -60,6 +60,7 @@
             background-color: themed('bg');
             padding: 5ch;
             border-radius: 8px; 
+            margin-bottom: 3ch;
             .icon {
                 cursor: pointer;
             }
@@ -207,6 +208,7 @@
                 height: 100%;
             }
         }
+       
     }  
 }
 }

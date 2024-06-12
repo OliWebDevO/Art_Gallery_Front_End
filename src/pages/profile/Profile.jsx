@@ -77,7 +77,7 @@ const Profile = () => {
         <div className='profile'>
             {isPending ? "Loading " :
             (<>
-                <div className="profile-container">
+            <div className="profile-container">
                 <div className="profile-banner">
                     <img className='banner-pic' src={"/upload/" + data.coverPic} alt="" />
                     <img className='profile-pic' src={"/upload/" + data.profilePic} alt="" />
