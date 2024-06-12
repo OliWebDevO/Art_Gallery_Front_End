@@ -67,41 +67,46 @@ const Update = ({setOpenUpdate, user}) => {
             </div>
             <div className="update-form">
                 <form action="">
-                    <div className="form-box">
-                        <label htmlFor="profile"> 
-                            <AddCircleOutlineIcon className='icon'/> 
-                            Profile Picture
-                        </label>
-                        <input type="file" name="profilePic" id="profile" onChange={e=>setProfilePic(e.target.files[0])} style={{display:'none'}}/>
-                    </div>
-                    <div className="form-box">
-                        <label htmlFor="cover">
-                            <AddCircleOutlineIcon className='icon'/> 
-                            Cover Picture
-                        </label>
-                        <input type="file" name="coverPic" id="cover" onChange={e=>setCoverPic(e.target.files[0])} style={{display:'none'}} />
-                    </div>
-                    <div className="form-box">
-                    <label htmlFor="name"> 
-                            <PersonIcon className='icon'/> 
-                    </label>
-                    <input type="text" name="name" id="name" placeholder='Update your name' onChange={handleChange}/>
-                    </div>
-                    <div className="form-box">
-                    <label htmlFor="city"> 
-                            <LocationOnIcon className='icon'/> 
-                    </label>
-                    <input type="text" name="city" id="city" placeholder='Update your city' onChange={handleChange}/>
-                    </div>
-                    <div className="form-box">
-                    <label htmlFor="website"> 
-                            <WebIcon className='icon'/> 
-                    </label>
-                    <input type="text" name="website" id='website' placeholder='Update your website' onChange={handleChange}/>
-                    </div>
-                    
+                    <div className="profile-update-box">
+                        <div className="profile-infos">
+                            <div className="form-box">
+                                <label htmlFor="profile">
+                                    <AddCircleOutlineIcon className='icon'/>
+                                    Profile Picture
+                                </label>
+                                <input type="file" name="profilePic" id="profile" onChange={e=>setProfilePic(e.target.files[0])} style={{display:'none'}}/>
+                            </div>
+                            <div className="form-box">
+                                <label htmlFor="cover">
+                                    <AddCircleOutlineIcon className='icon'/>
+                                    Cover Picture
+                                </label>
+                                <input type="file" name="coverPic" id="cover" onChange={e=>setCoverPic(e.target.files[0])} style={{display:'none'}} />
+                            </div>
+                            <div className="form-box">
+                                <label htmlFor="name">
+                                        <PersonIcon className='icon'/>
+                                </label>
+                                <input type="text" name="name" id="name" placeholder='Your name' onChange={handleChange}/>
+                            </div>
+                            <div className="form-box">
+                                <label htmlFor="city">
+                                        <LocationOnIcon className='icon'/>
+                                </label>
+                                <input type="text" name="city" id="city" placeholder='Your city' onChange={handleChange}/>
+                            </div>
+                            <div className="form-box">
+                                <label htmlFor="website">
+                                        <WebIcon className='icon'/>
+                                </label>
+                                <input type="text" name="website" id='website' placeholder='Your website' onChange={handleChange}/>
+                            </div>
+                        </div>
+                        <div className="profile-desc">
+                            <textarea type="text" name="desc" id="desc" placeholder='Your description' onChange={handleChange}/>
+                        </div>
+                    </div>   
                     <button onClick={handleSubmit}>Update</button>
-                    
                 </form>
             </div>
         </div>

@@ -8,11 +8,15 @@
     display: flex;
     flex-direction: column;
     gap: 4ch;
-    @include mobile {
-        padding: 10px;
-        width: 100%;
-    }
-    @include tablet {
+    // @include mobile {
+    //     padding: 10px;
+    //     width: 100%;
+    // }
+    // @include tablet {
+    //     padding: 10px;
+    //     width: 100%;
+    // }
+    @include smallscreen {
         padding: 10px;
         width: 100%;
     }

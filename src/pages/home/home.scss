@@ -9,14 +9,14 @@
     flex-direction: column;
     gap: 4ch;
     min-height: 100vh;
-    @include mobile {
-        padding: 10px;
-        width: 100%;
-    }
-    @include tablet {
-        padding: 10px;
-        width: 100%;
-    }
+    // @include mobile {
+    //     padding: 10px;
+    //     width: 100%;
+    // }
+    // @include tablet {
+    //     padding: 10px;
+    //     width: 100%;
+    // }
     @include smallscreen {
         padding: 10px;
         width: 100%;

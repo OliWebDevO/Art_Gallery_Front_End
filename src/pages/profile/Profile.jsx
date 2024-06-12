@@ -124,10 +124,11 @@ const Profile = () => {
                     </div>
                     <div className="profile-desc">
                         <p>
-                            Being a unicorn is an enchanting experience unlike any other. Unlike humans, unicorns possess a magical aura that exudes beauty and grace. Their days are filled with adventure as they gallop through mystical forests and prance under rainbows. Unicorns have the unique ability to heal and bring joy to those around them, a power humans can only dream of. With a shimmering horn, unicorns can tap into ancient magic, creating miracles and wonders. Their lives are unburdened by the mundane worries that humans face daily. Unicorns communicate with nature, forming bonds with woodland creatures and the elements. 
+                            {data.desc}
+                            {/* Being a unicorn is an enchanting experience unlike any other. Unlike humans, unicorns possess a magical aura that exudes beauty and grace. Their days are filled with adventure as they gallop through mystical forests and prance under rainbows. Unicorns have the unique ability to heal and bring joy to those around them, a power humans can only dream of. With a shimmering horn, unicorns can tap into ancient magic, creating miracles and wonders. Their lives are unburdened by the mundane worries that humans face daily. Unicorns communicate with nature, forming bonds with woodland creatures and the elements.  */}
                         </p>
-                        <FormatQuoteIcon className='icon abs a1'/>
-                        <FormatQuoteIcon className='icon abs a2'/>
+                        {data.desc !== null && <FormatQuoteIcon className='icon abs a1'/>}
+                        {data.desc !== null && <FormatQuoteIcon className='icon abs a2'/>}
                     </div>
                     <div className="profile-gallery">
                        <img className='profil-grid-item-1' src={imgMiniGallery1} alt="" />
