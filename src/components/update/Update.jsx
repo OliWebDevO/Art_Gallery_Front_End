@@ -68,18 +68,18 @@ const Update = ({setOpenUpdate, user}) => {
             <div className="update-form">
                 <form action="">
                     <div className="form-box">
-                        <label htmlFor="cover">
-                            <AddCircleOutlineIcon className='icon'/> 
-                            Cover Picture
-                        </label>
-                        <input type="file" name="coverPic" id="cover" onChange={e=>setCoverPic(e.target.files[0])} style={{display:'none'}} />
-                    </div>
-                    <div className="form-box">
                         <label htmlFor="profile"> 
                             <AddCircleOutlineIcon className='icon'/> 
                             Profile Picture
                         </label>
                         <input type="file" name="profilePic" id="profile" onChange={e=>setProfilePic(e.target.files[0])} style={{display:'none'}}/>
+                    </div>
+                    <div className="form-box">
+                        <label htmlFor="cover">
+                            <AddCircleOutlineIcon className='icon'/> 
+                            Cover Picture
+                        </label>
+                        <input type="file" name="coverPic" id="cover" onChange={e=>setCoverPic(e.target.files[0])} style={{display:'none'}} />
                     </div>
                     <div className="form-box">
                     <label htmlFor="name"> 
