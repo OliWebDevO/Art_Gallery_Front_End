@@ -21,15 +21,20 @@ const NavBar = () => {
         localStorage.clear();
         location.reload()
     }
+    const handleClick = () => {
+        setTimeout(() => {
+            location.reload();
+          }, "1");
+    }
 
     return (
         <div className="nav-bg">
             <div className='navbar'>
                 <div className="left">
-                    <Link to={"/"} style={{textDecoration:"none", color:"black"}}>
+                    <Link to={"/"} className='link'>
                         <div className="logo">Art Gallery</div>
                     </Link>
-                    <Link to={"/"} style={{textDecoration:"none", color:"black"}}>
+                    <Link to={"/"} className='link'>
                         <HomeOutlinedIcon className='icon'/>
                     </Link>
                     {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
@@ -40,12 +45,12 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <Link className="user" style={{textDecoration:"none", color:"black"}} to={`/profile/`+ currentUser.id}>
+                    <Link className="user link" onClick={handleClick} to={`/profile/`+ currentUser.id}>
                         <PermIdentityIcon className='icon'/>
                     </Link>
                     <MailOutlineIcon className='icon'/>
                     <NotificationsNoneIcon className='icon'/>
-                    <Link className="user"  to={`/profile/`+ currentUser.id}>
+                    <Link className="user link" onClick={handleClick} to={`/profile/`+ currentUser.id}>
                         <img src={'/upload/' + currentUser.profilePic} alt="" />
                         <span>{currentUser.name}</span>
                     </Link>

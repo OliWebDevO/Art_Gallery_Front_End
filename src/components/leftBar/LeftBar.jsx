@@ -9,11 +9,17 @@ const LeftBar = () => {
 
     const {currentUser} = useContext(AuthContext);
 
+    const handleClick = () => {
+        setTimeout(() => {
+            location.reload();
+          }, "1");
+    }
+
     return (
         <div className='leftbar'>
             <div className="container">
                 <div className="menu">
-                    <Link className="user" to={`/profile/`+ currentUser.id}>
+                    <Link className="user" onClick={handleClick} to={`/profile/`+ currentUser.id}>
                         <img src={'/upload/' + currentUser.profilePic} alt="" />
                         <span>{currentUser.name}</span>
                     </Link>
