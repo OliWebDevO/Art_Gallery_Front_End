@@ -23,6 +23,8 @@ import { useLocation } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import Update from '../../components/update/Update';
+import { Share } from '../../components/share/Share';
+
 
 const Profile = () => {
 
@@ -137,6 +139,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="posts">
+                {userId === currentUser.id && <Share/>}
                 <Posts userId={userId}/>
                 </div>
             </div>
