@@ -90,7 +90,7 @@ const Post = ({ post }) => {
             </div>
             <div className="post-content">
                 <p>{post.desc}</p>
-                <img src={'./upload/' + post.img} alt="" />
+                <img src={'/upload/' + post.img} alt="" />
                 <div className="post-reactions">
                     <div className="post-like">
                         {isPending ? "Loading" : data.includes(currentUser.id) ? (

@@ -10,7 +10,7 @@ import { AuthContext } from '../../context/authContext';
 
 
 const Posts = ({userId}) => {
-
+  
   // React Query pour les posts
   const { isPending, error, data } = useQuery({
     queryKey: ['posts'],
@@ -62,10 +62,10 @@ const Posts = ({userId}) => {
     setDesc("")
   }
 
-
+ 
     return (
         <div className="posts">
-            <div className="my-post">
+            {userId === currentUser.id && <div className="my-post">
               <div className="post-text">
                 <div className="left">
                   <img src={'/upload/' + currentUser.profilePic} alt="" />
@@ -87,7 +87,7 @@ const Posts = ({userId}) => {
                   <button onClick={handleClick}>Share</button>
                 </div>
               </div>
-            </div>
+            </div>}
 
             { error 
             ? 'Something went wront' 
