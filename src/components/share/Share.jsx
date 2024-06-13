@@ -50,6 +50,7 @@ export const Share = () => {
     //On amène la mutation de react query
     mutation.mutate({desc, img: imgUrl})
     setDesc("")
+    setFile(null)
   }
 
   return (
