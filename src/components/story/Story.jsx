@@ -1,5 +1,5 @@
 import React from 'react'
-import {useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {useMutation, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import './story.scss'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -30,7 +30,7 @@ const handleDelete = () => {
   return (
         <div className='story' key={story.id}>
                   <img src={"/upload/" + story.img} alt="" />
-                  {story.userId === currentUser.id && <ClearIcon onClick={handleDelete} className='appear'/>}
+                  {story.userId === currentUser.id && <ClearIcon onClick={handleDelete} className='clear'/>}
         </div> 
   )
 }

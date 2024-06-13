@@ -25,7 +25,8 @@ const Post = ({ post }) => {
         rotation === "iconRotation" && setRotation("")
         setMenuOpen(!menuOpen)
     }
-    
+
+
      // React Query pour les likes
      const { isPending, error, data } = useQuery({
         initialData:[],

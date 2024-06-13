@@ -37,12 +37,7 @@
                     background-color: transparent;
                     border: none;
                     cursor: pointer;
-                    // transition: .6s ease-in-out;
-                    // &:hover{
-                    //     transition: .6s ease-in-out;
-                    //     transform: rotate(360deg)
-                        
-                    // }
+                    color: themed('textColor');
                 }   
             }
             

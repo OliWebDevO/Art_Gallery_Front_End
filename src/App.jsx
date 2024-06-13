@@ -20,6 +20,7 @@ import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
 //React Query import
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import ScrollToTop from './components/scrolltotop/ScrollToTop';
 
 
 
@@ -43,6 +44,7 @@ const Layout = () => {
       <NavBar/>
       <div className='app' style={{display: "flex"}}>
         <LeftBar/>
+        <ScrollToTop/>
         <Outlet/>
         <RightBar/>
       </div>

@@ -9,7 +9,8 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ClearIcon from '@mui/icons-material/Clear';
 
 const Update = ({setOpenUpdate, user}) => {
-
+    
+  
     const [coverPic, setCoverPic] = useState(null)
     const [profilePic, setProfilePic] = useState(null)
     const [text, setText] = useState({
