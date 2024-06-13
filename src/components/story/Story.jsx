@@ -1,5 +1,5 @@
 import React from 'react'
-import { QueryClient, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import './story.scss'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -12,6 +12,8 @@ export const Story = ({story}) => {
 
   const {currentUser} = useContext(AuthContext)
 
+  //React Query
+  const queryClient = useQueryClient()
   // Mutations for story delete
   const deleteStoryMutation = useMutation({
     mutationFn: (storyId) => {
@@ -19,7 +21,7 @@ export const Story = ({story}) => {
     },
     onSuccess: () => {
         // Invalidate and refetch
-        QueryClient.invalidateQueries({ queryKey: ['stories'] })
+        queryClient.invalidateQueries({ queryKey: ['stories'] })
     },
 })
 const handleDelete = () => {
