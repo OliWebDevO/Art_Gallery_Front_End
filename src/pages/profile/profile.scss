@@ -167,49 +167,60 @@
             display: grid;
             grid-template-columns: repeat(4, calc(25% - 1ch));
             gap: 1ch;
+            .icon {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                color: white;
+            }
+            .add {
+                position: absolute;
+                height: 23px;
+                top: 5px;
+                right: 27px;
+                color: white;
+            }
             img {
                 object-fit: cover;
                 object-position: center;
+                width: 100%;
+                height: 100%;
                 border-radius: 5px;
                 -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
                 -moz-box-shadow : 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
                 box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
             }
             .profil-grid-item-1  {
+                position: relative;
                 grid-column: 1/2;
                 grid-row: 1/2;
-                width: 100%;
-                height: 100%;
             }
             .profil-grid-item-2 {
+                position: relative;
                 grid-column: 1/2;
                 grid-row: 2/3;
-                width: 100%;
-                height: 100%;
             }
             .profil-grid-item-3 {
+                position: relative;
                 grid-column: 2 / 3 ;
                 grid-row: 1 / 3;
-                width: 100%;
-                height: 100%;
             }
             .profil-grid-item-4 {
+                position: relative;
                 grid-column: 3/5;
                 grid-row: 1/2;
-                width: 100%;
-                height: 100%;
+
             }
             .profil-grid-item-5 {
+                position: relative;
                 grid-column: 3/4;
                 grid-row: 2/3;
-                width: 100%;
-                height: 100%;
+
             }
             .profil-grid-item-6 {
+                position: relative;
                 grid-column: 4/5;
                 grid-row: 2/3;
-                width: 100%;
-                height: 100%;
             }
         }
        

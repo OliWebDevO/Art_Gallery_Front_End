@@ -19,12 +19,13 @@ import imgMiniGallery3 from '../../assets/gallery/gallery32.jpeg'
 import imgMiniGallery4 from '../../assets/gallery/gallery60.jpeg'
 import imgMiniGallery5 from '../../assets/gallery/gallery4.jpeg'
 import imgMiniGallery6 from '../../assets/gallery/gallery40.jpeg'
+import ClearIcon from '@mui/icons-material/Clear';
 import { useLocation } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import Update from '../../components/update/Update';
 import { Share } from '../../components/share/Share';
-
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const Profile = () => {
 
@@ -131,12 +132,36 @@ const Profile = () => {
                         {data.desc !== null && <FormatQuoteIcon className='icon abs a2'/>}
                     </div>
                     <div className="profile-gallery">
-                       <img className='profil-grid-item-1' src={imgMiniGallery1} alt="" />
-                       <img className='profil-grid-item-2' src={imgMiniGallery2} alt="" />
-                       <img className='profil-grid-item-3' src={imgMiniGallery3} alt="" />
-                       <img className='profil-grid-item-4' src={imgMiniGallery4} alt="" />
-                       <img className='profil-grid-item-5' src={imgMiniGallery5} alt="" />
-                       <img className='profil-grid-item-6' src={imgMiniGallery6} alt="" />
+                       <div className="profil-grid-item-1">
+                        <img src={imgMiniGallery1} alt="" />
+                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                       </div>
+                       <div className="profil-grid-item-2">
+                        <img src={imgMiniGallery2} alt="" />
+                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                       </div>
+                       <div className="profil-grid-item-3">
+                        <img src={imgMiniGallery3} alt="" />
+                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                       </div>
+                       <div className="profil-grid-item-4">
+                        <img src={imgMiniGallery4} alt="" />
+                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                       </div>
+                       <div className="profil-grid-item-5">
+                        <img src={imgMiniGallery5} alt="" />
+                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                       </div>
+                       <div className="profil-grid-item-6">
+                        <img src={imgMiniGallery6} alt="" />
+                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                       </div>  
                     </div>
                 </div>
                 <div className="posts">
