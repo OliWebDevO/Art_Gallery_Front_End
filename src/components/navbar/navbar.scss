@@ -37,11 +37,25 @@
             display: flex;
             align-items: center;
             gap: 30px;
+            @media (max-width: 750px) {
+                gap: 0;
+            }
+            .icon {
+                @media (max-width: 750px) {
+                    padding-right: 30px;
+                }
+                @media (max-width: 400px) {
+                    padding-right: 20px;
+                }
+            }
             .logo {
                 color: themed("logo");
                 font-weight: bold;
                 font-size: 22px;
                 transition: .3s ease-in-out;
+                @media (max-width: 750px) {
+                    display: none;
+                }
                 &:hover {
                     transition: .3s ease-in-out;
                     opacity: 0.7;
@@ -54,6 +68,15 @@
                 border: 1px solid themed("border");
                 border-radius: 5px;
                 padding: 5px;
+                @include mobile {
+                    display: none;
+                }
+                @include tablet {
+                    display: none;
+                }
+                @media (max-width: 750px) {
+                    display: none;;
+                }
                 input {
                     border: none;
                     width: 500px;
@@ -62,12 +85,7 @@
                     &:focus {
                         outline: none;
                     }
-                    @include mobile {
-                        display: none;
-                    }
-                    @include tablet {
-                        display: none;
-                    }
+                    
                     @include smallscreen {
                         width: 30ch;
                     }
@@ -75,12 +93,25 @@
             }
         }
         .right {
-            @include mobile {
-                display: none;
-            }
+            // @include mobile {
+            //     display: none;
+            // }
             display: flex;
             align-items: center;
             gap: 30px;
+            @media (max-width: 400px) {
+                gap: 20px;
+            }
+            .mail-i {
+                @media (max-width: 550px) {
+                    display: none;
+                }
+            }
+            .notif-i{
+                @media (max-width: 550px) {
+                    display: none;
+                }
+            }
             .user {
                 display: flex;
                 align-items: center;
@@ -102,6 +133,9 @@
                     font-size: 14px;
                     font-weight: 500;
                     color: themed('textColor');
+                    @media (max-width: 750px) {
+                        display: none;
+                    }
                 }
             }
         }

@@ -1,6 +1,6 @@
 import './posts.scss'
 import Post from '../post/Post';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery} from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 
 
@@ -17,6 +17,7 @@ const Posts = ({userId}) => {
   })
   
     return (
+      
         <div className="posts">
             { error 
             ? 'Something went wront' 

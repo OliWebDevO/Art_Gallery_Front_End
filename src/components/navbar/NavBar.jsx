@@ -46,12 +46,12 @@ const NavBar = () => {
                 </div>
                 <div className="right">
                     <Link className="user link" onClick={handleClick} to={`/profile/`+ currentUser.id}>
-                        <PermIdentityIcon className='icon'/>
+                        <PermIdentityIcon className='icon profile-i'/>
                     </Link>
-                    <MailOutlineIcon className='icon'/>
-                    <NotificationsNoneIcon className='icon'/>
+                    <MailOutlineIcon className='icon mail-i'/>
+                    <NotificationsNoneIcon className='icon notif-i'/>
                     <Link className="user link" onClick={handleClick} to={`/profile/`+ currentUser.id}>
-                        <img src={'/upload/' + currentUser.profilePic} alt="" />
+                        <img className='u-buble' src={'/upload/' + currentUser.profilePic} alt="" />
                         <span>{currentUser.name}</span>
                     </Link>
                     <LogoutIcon className='icon' onClick={handleLogout}/>
