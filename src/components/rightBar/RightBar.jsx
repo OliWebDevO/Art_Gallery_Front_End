@@ -1,37 +1,45 @@
 import './rightbar.scss'
 import { Link } from 'react-router-dom'
 import img1 from '../../assets/art1.jpeg'
+import ClearIcon from '@mui/icons-material/Clear';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 const RightBar = () => {
     return (
         <div className='rightbar'>
             <div className="container">
                 <div className="suggestions box">
                     <div className="title">
-                        <h4>Suggestions for you</h4>    
+                        <h4>Popular artists</h4>    
                     </div>
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
                         <span>
                             Steven Seagal
                         </span>
-                        <button className='add'>Add</button>
-                        <button className='dismiss'>Dismiss</button>
+                        <div className="icons">
+                            <AddCircleOutlineIcon className='add'/>
+                            <ClearIcon className='dismiss'/>
+                        </div>
                     </div>
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
                         <span>
                             Indiana Jones
                         </span>
-                        <button className='add'>Add</button>
-                        <button className='dismiss'>Dismiss</button>
+                        <div className="icons">
+                            <AddCircleOutlineIcon className='add'/>
+                            <ClearIcon className='dismiss'/>
+                        </div>
                     </div>
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
                         <span>
                             Batman
                         </span>
-                        <button className='add'>Add</button>
-                        <button className='dismiss'>Dismiss</button>
+                        <div className="icons">
+                            <AddCircleOutlineIcon className='add'/>
+                            <ClearIcon className='dismiss'/>
+                        </div>
                     </div>
                 </div>
                 <div className="latest box">
@@ -40,28 +48,41 @@ const RightBar = () => {
                     </div>
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Steven Seagal
-                        </span>
-                        <p className='activity'>Posted a new photo</p> 
-                        <p className='a-time'>1 min ago</p>
+                            <div className="activity-info">
+                                <span>
+                                Steven Seagal
+                                </span>
+                                <div className="activity-time">
+                                    <p className='activity'>Posted a new photo</p>
+                                    <p className='a-time'>1 min ago</p>
+                                </div>
+                            </div>
                     </div>
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Indiana Jones
-                        </span>
-                        <p className='activity'>Liked a post</p>
-                        <p className='a-time'>5 min ago</p>
+                            <div className="activity-info">
+                                <span>
+                                Steven Seagal
+                                </span>
+                                <div className="activity-time">
+                                    <p className='activity'>Posted a new photo</p>
+                                    <p className='a-time'>1 min ago</p>
+                                </div>
+                            </div>
                     </div>
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Batman
-                        </span>
-                        <p className='activity'>posted</p>
-                        <p className='a-time'>15 min ago</p>
+                            <div className="activity-info">
+                                <span>
+                                Steven Seagal
+                                </span>
+                                <div className="activity-time">
+                                    <p className='activity'>Posted a new photo</p>
+                                    <p className='a-time'>1 min ago</p>
+                                </div>
+                            </div>
                     </div>
+                    
                 </div>
                 <div className="friends-online box">
                     <div className="title">

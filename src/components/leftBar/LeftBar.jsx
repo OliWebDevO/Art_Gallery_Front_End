@@ -3,12 +3,20 @@ import { Link } from 'react-router-dom'
 import img1 from '../../assets/art1.jpeg'
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
+import { DarkModeContext } from '../../context/darkModeContext';
 import React from 'react'
-
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import GridViewIcon from '@mui/icons-material/GridView';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
 const LeftBar = () => {
 
     const {currentUser} = useContext(AuthContext);
+    const {toggle, darkMode} = useContext(DarkModeContext)
 
     const handleClick = () => {
         setTimeout(() => {
@@ -25,50 +33,44 @@ const LeftBar = () => {
                         <span>My profile</span>
                     </Link>
                     <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
+                        <ColorLensIcon/>
                         <span>
                             My gallery
                         </span>
                     </div>
                     <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
+                        <GridViewIcon/>
                         <span>
-                            the gallery
+                            General gallery
                         </span>
                     </div>
                     <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
+                    {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
+                        {darkMode?  <span onClick={toggle}>Switch to Light Mode</span> : <span onClick={toggle}>Switch to dark Mode</span>}
+                    </div>
+                    <div className="item">
+                        <MailOutlineIcon/>
                         <span>
-                            Friends
+                            Messages
                         </span>
                     </div>
                     <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
+                        <NotificationsNoneIcon/>
                         <span>
-                            Friends
-                        </span>
-                    </div>
-                    <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
+                            Notifications
                         </span>
                     </div>
                     <div className="item last-item">
-                        <img className='item-icon' src={img1} alt="" />
+                        <CalendarMonthOutlinedIcon/>
                         <span>
-                            Friends
+                            Events
                         </span>
                     </div>
                 </div>
                 <hr />
                 <div className="menu">
-                    
                     <div className="item first-item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
+                        <h4>Favorite artists</h4>
                     </div>
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
@@ -95,7 +97,7 @@ const LeftBar = () => {
                         </span>
                     </div>
                 </div>
-                <hr />
+                {/* <hr />
                 <div className="menu">
                    
                     <div className="item first-item">
@@ -116,7 +118,7 @@ const LeftBar = () => {
                             Friends
                         </span>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
