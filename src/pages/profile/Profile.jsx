@@ -102,7 +102,7 @@ const Profile = () => {
     const queryClientMiniGallery = useQueryClient()
     // Mutations
     const mutationMiniGallery = useMutation({
-    mutationFn: (data) => {
+    mutationFn: () => {
         return makeRequest.put('/users', data)
     },
     onSuccess: () => {
@@ -111,31 +111,31 @@ const Profile = () => {
     },
     })
 
-    const handleSubmitMg = async (e) => {
-        e.preventDefault()
-        //On apporte le file avec la fct upload de muller
-        let img1Url;
-        let img2Url;
-        let img3Url;
-        let img4Url;
-        let img5Url;
-        let img6Url;
-        img1Url = img1 ? await uploadMiniGallery(img1) : user.miniGallery1
-        // img2Url = img2 ? await uploadMiniGallery(img2) : data.miniGallery2;
-        // img3Url = img3 ? await uploadMiniGallery(img3) : data.miniGallery3;
-        // img4Url = img4 ? await uploadMiniGallery(img4) : data.miniGallery4;
-        // img5Url = img5 ? await uploadMiniGallery(img5) : data.miniGallery5;
-        // img6Url = img6 ? await uploadMiniGallery(img6) : data.miniGallery6;
-        //On amène la mutation de react query
-        mutationMiniGallery.mutate({miniGallery1: img1Url})
-            // img2 : img2Url, 
-            // img3 : img3Url, 
-            // img4 : img4Url, 
-            // img5 : img5Url,
-            // img6 : img6Url
+    // const handleSubmitMg = async (e) => {
+    //     e.preventDefault()
+    //     //On apporte le file avec la fct upload de muller
+    //     let img1Url;
+    //     let img2Url;
+    //     let img3Url;
+    //     let img4Url;
+    //     let img5Url;
+    //     let img6Url;
+    //     img1Url = img1 ? await uploadMiniGallery(img1) : data.miniGallery1
+    //     // img2Url = img2 ? await uploadMiniGallery(img2) : data.miniGallery2;
+    //     // img3Url = img3 ? await uploadMiniGallery(img3) : data.miniGallery3;
+    //     // img4Url = img4 ? await uploadMiniGallery(img4) : data.miniGallery4;
+    //     // img5Url = img5 ? await uploadMiniGallery(img5) : data.miniGallery5;
+    //     // img6Url = img6 ? await uploadMiniGallery(img6) : data.miniGallery6;
+    //     //On amène la mutation de react query
+    //     mutationMiniGallery.mutate({miniGallery1: img1Url})
+    //         // img2 : img2Url, 
+    //         // img3 : img3Url, 
+    //         // img4 : img4Url, 
+    //         // img5 : img5Url,
+    //         // img6 : img6Url
         
-        setImg1(null)
-    }
+    //     setImg1(null)
+    // }
 
     return (
         <div className='profile'>
@@ -196,13 +196,13 @@ const Profile = () => {
                     <div className="profile-gallery">
                        <div className="profil-grid-item-1 rel-box">
                         <img src={data.miniGallery1 === null ? imgMiniGallery1 : "/upload/" + data.miniGallery1} alt="" />
-                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {/* {userId === currentUser.id && <ClearIcon className='icon'/>} */}
                         {userId === currentUser.id &&
                         <>
                             <label htmlFor="img1">
-                            <AddCircleOutlineIcon className='add'/>
+                            {/* <AddCircleOutlineIcon className='add'/> */}
                             </label> 
-                            <input type="file" name='miniGallery1' id="img1" onChange={e=>setImg1(e.target.files[0])} style={{display:'none'}}/>
+                            {/* <input type="file" name='miniGallery1' id="img1" onChange={e=>setImg1(e.target.files[0])} style={{display:'none'}}/> */}
                             {img1 && <div className="img-abs">
                             <img className='img-abs' src={URL.createObjectURL(img1)} alt="" />
                             </div>}
@@ -213,28 +213,28 @@ const Profile = () => {
                        </div>
                        <div className="profil-grid-item-2 rel-box">
                         <img src={data.miniGallery2 === null ? imgMiniGallery2 : "/upload/" + data.miniGallery2} alt="" />
-                        {userId === currentUser.id && <ClearIcon className='icon'/>}
-                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                        {/* {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>} */}
                        </div>
                        <div className="profil-grid-item-3 rel-box">
                         <img src={data.miniGallery3 === null ? imgMiniGallery3 : "/upload/" + data.miniGallery3} alt="" />
-                        {userId === currentUser.id && <ClearIcon className='icon'/>}
-                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                        {/* {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>} */}
                        </div>
                        <div className="profil-grid-item-4 rel-box">
                         <img src={data.miniGallery4 === null ? imgMiniGallery4 : "/upload/" + data.miniGallery4} alt="" />
-                        {userId === currentUser.id && <ClearIcon className='icon'/>}
-                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                        {/* {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>} */}
                        </div>
                        <div className="profil-grid-item-5 rel-box">
                         <img src={data.miniGallery5 === null ? imgMiniGallery5 : "/upload/" + data.miniGallery5} alt="" />
-                        {userId === currentUser.id && <ClearIcon className='icon'/>}
-                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                        {/* {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>} */}
                        </div>
                        <div className="profil-grid-item-6 rel-box">
                         <img src={data.miniGallery6 === null ? imgMiniGallery6 : "/upload/" + data.miniGallery6} alt="" />
-                        {userId === currentUser.id && <ClearIcon className='icon'/>}
-                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
+                        {/* {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>} */}
                        </div>  
                     </div>
                 </div>
