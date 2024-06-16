@@ -76,7 +76,7 @@ const Stories = ({userId}) => {
                   <img className='fileStory' src={URL.createObjectURL(fileStory)} alt="" />
                 </div>}
                 {fileStory && <button className='share' onClick={handleSend}>Share</button>}
-                {fileStory && <button className='cancel' onClick={handleSend}>Cancel</button>}
+                {fileStory && <button className='cancel' onClick={handleCancel}>Cancel</button>}
             </div>
             {error ? 'Something went wrong' : isPending ? 'Loading'
             : data.map(story => (

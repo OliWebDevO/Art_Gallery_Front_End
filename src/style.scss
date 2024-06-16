@@ -49,7 +49,7 @@ $themes:(
     }
 }
 @mixin smallscreen {
-    @media (max-width: 1380px) {
+    @media (max-width: 1350px) {
         @content;
     }
 }

@@ -26,6 +26,7 @@ import { makeRequest } from '../../axios';
 import Update from '../../components/update/Update';
 import { Share } from '../../components/share/Share';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import SyncIcon from '@mui/icons-material/Sync';
 
 const Profile = () => {
 
@@ -33,6 +34,14 @@ const Profile = () => {
 
     //Update part
     const [openUpdate, setOpenUpdate] = useState(false)
+
+    //States to Update Mini Gallery
+    const [img1, setImg1] = useState(null)
+    const [img2, setImg2] = useState(null)
+    const [img3, setImg3] = useState(null)
+    const [img4, setImg4] = useState(null)
+    const [img5, setImg5] = useState(null)
+    const [img6, setImg6] = useState(null)
 
     //Cherche le numéro de profil dans l'url
     const userId = parseInt(useLocation().pathname.split("/")[2])
@@ -54,6 +63,8 @@ const Profile = () => {
         })
     })
 
+
+
     //React Query
     const queryClient = useQueryClient()
     // Mutations
@@ -73,6 +84,58 @@ const Profile = () => {
         mutation.mutate(relationshipData.includes(currentUser.id))
     }
 
+
+       //Part for mediaUpload of MiniGallery
+       //File upload function
+       const uploadMiniGallery = async (file) => {
+        try{
+        const formData = new FormData();
+        formData.append('file', file)
+        const res = await makeRequest.post('/upload', formData);
+        return res.data
+        }catch(err){
+        console.log(err)
+        }
+    }
+
+    //React Query pour l'update
+    const queryClientMiniGallery = useQueryClient()
+    // Mutations
+    const mutationMiniGallery = useMutation({
+    mutationFn: (data) => {
+        return makeRequest.put('/users', data)
+    },
+    onSuccess: () => {
+        // Invalidate and refetch
+        queryClientMiniGallery.invalidateQueries({ queryKey: ['user'] })
+    },
+    })
+
+    const handleSubmitMg = async (e) => {
+        e.preventDefault()
+        //On apporte le file avec la fct upload de muller
+        let img1Url;
+        let img2Url;
+        let img3Url;
+        let img4Url;
+        let img5Url;
+        let img6Url;
+        img1Url = img1 ? await uploadMiniGallery(img1) : user.miniGallery1
+        // img2Url = img2 ? await uploadMiniGallery(img2) : data.miniGallery2;
+        // img3Url = img3 ? await uploadMiniGallery(img3) : data.miniGallery3;
+        // img4Url = img4 ? await uploadMiniGallery(img4) : data.miniGallery4;
+        // img5Url = img5 ? await uploadMiniGallery(img5) : data.miniGallery5;
+        // img6Url = img6 ? await uploadMiniGallery(img6) : data.miniGallery6;
+        //On amène la mutation de react query
+        mutationMiniGallery.mutate({miniGallery1: img1Url})
+            // img2 : img2Url, 
+            // img3 : img3Url, 
+            // img4 : img4Url, 
+            // img5 : img5Url,
+            // img6 : img6Url
+        
+        setImg1(null)
+    }
 
     return (
         <div className='profile'>
@@ -126,39 +189,50 @@ const Profile = () => {
                     <div className="profile-desc">
                         <p>
                             {data.desc}
-                            {/* Being a unicorn is an enchanting experience unlike any other. Unlike humans, unicorns possess a magical aura that exudes beauty and grace. Their days are filled with adventure as they gallop through mystical forests and prance under rainbows. Unicorns have the unique ability to heal and bring joy to those around them, a power humans can only dream of. With a shimmering horn, unicorns can tap into ancient magic, creating miracles and wonders. Their lives are unburdened by the mundane worries that humans face daily. Unicorns communicate with nature, forming bonds with woodland creatures and the elements.  */}
                         </p>
                         {data.desc !== null && <FormatQuoteIcon className='icon abs a1'/>}
                         {data.desc !== null && <FormatQuoteIcon className='icon abs a2'/>}
                     </div>
                     <div className="profile-gallery">
-                       <div className="profil-grid-item-1">
-                        <img src={imgMiniGallery1} alt="" />
+                       <div className="profil-grid-item-1 rel-box">
+                        <img src={data.miniGallery1 === null ? imgMiniGallery1 : "/upload/" + data.miniGallery1} alt="" />
+                        {userId === currentUser.id && <ClearIcon className='icon'/>}
+                        {userId === currentUser.id &&
+                        <>
+                            <label htmlFor="img1">
+                            <AddCircleOutlineIcon className='add'/>
+                            </label> 
+                            <input type="file" name='miniGallery1' id="img1" onChange={e=>setImg1(e.target.files[0])} style={{display:'none'}}/>
+                            {img1 && <div className="img-abs">
+                            <img className='img-abs' src={URL.createObjectURL(img1)} alt="" />
+                            </div>}
+                            {img1 && <button className='share' onClick={handleSubmitMg}>Update</button>}
+                            {img1 && <button className='cancel' onClick={(e)=>setImg1(null)}>Cancel</button>}
+                        </>
+                        }
+                       </div>
+                       <div className="profil-grid-item-2 rel-box">
+                        <img src={data.miniGallery2 === null ? imgMiniGallery2 : "/upload/" + data.miniGallery2} alt="" />
                         {userId === currentUser.id && <ClearIcon className='icon'/>}
                         {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
                        </div>
-                       <div className="profil-grid-item-2">
-                        <img src={imgMiniGallery2} alt="" />
+                       <div className="profil-grid-item-3 rel-box">
+                        <img src={data.miniGallery3 === null ? imgMiniGallery3 : "/upload/" + data.miniGallery3} alt="" />
                         {userId === currentUser.id && <ClearIcon className='icon'/>}
                         {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
                        </div>
-                       <div className="profil-grid-item-3">
-                        <img src={imgMiniGallery3} alt="" />
+                       <div className="profil-grid-item-4 rel-box">
+                        <img src={data.miniGallery4 === null ? imgMiniGallery4 : "/upload/" + data.miniGallery4} alt="" />
                         {userId === currentUser.id && <ClearIcon className='icon'/>}
                         {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
                        </div>
-                       <div className="profil-grid-item-4">
-                        <img src={imgMiniGallery4} alt="" />
+                       <div className="profil-grid-item-5 rel-box">
+                        <img src={data.miniGallery5 === null ? imgMiniGallery5 : "/upload/" + data.miniGallery5} alt="" />
                         {userId === currentUser.id && <ClearIcon className='icon'/>}
                         {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
                        </div>
-                       <div className="profil-grid-item-5">
-                        <img src={imgMiniGallery5} alt="" />
-                        {userId === currentUser.id && <ClearIcon className='icon'/>}
-                        {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
-                       </div>
-                       <div className="profil-grid-item-6">
-                        <img src={imgMiniGallery6} alt="" />
+                       <div className="profil-grid-item-6 rel-box">
+                        <img src={data.miniGallery6 === null ? imgMiniGallery6 : "/upload/" + data.miniGallery6} alt="" />
                         {userId === currentUser.id && <ClearIcon className='icon'/>}
                         {userId === currentUser.id && <AddCircleOutlineIcon className='add'/>}
                        </div>  

@@ -14,9 +14,10 @@ const Update = ({setOpenUpdate, user}) => {
     const [coverPic, setCoverPic] = useState(null)
     const [profilePic, setProfilePic] = useState(null)
     const [text, setText] = useState({
-        name: "",
-        city:"",
-        website:"",
+        name: user.name || "",
+        city: user.city || "",
+        website: user.website || "",
+        desc: user.desc || "",
     })
 
       //File upload function
@@ -34,7 +35,7 @@ const Update = ({setOpenUpdate, user}) => {
     const handleChange = (e) => {
         setText((prev)=> ({...prev, [e.target.name] : [e.target.value]}))
     }
-        //React Query pour le share
+        //React Query pour l'update
     const queryClient = useQueryClient()
     // Mutations
     const mutation = useMutation({
@@ -54,9 +55,19 @@ const Update = ({setOpenUpdate, user}) => {
         let profileUrl 
         coverUrl = coverPic ? await upload(coverPic) : user.coverPic;
         profileUrl = profilePic ? await upload(profilePic) : user.profilePic;
+        const updatedData = {
+            name: text.name || user.name,
+            city: text.city || user.city,
+            website: text.website || user.website,
+            desc: text.desc || user.desc,
+            coverPic: coverUrl,
+            profilePic: profileUrl,
+        };
         //On amène la mutation de react query
-        mutation.mutate({...text, coverPic: coverUrl, profilePic: profileUrl})
+        mutation.mutate(updatedData)
         setOpenUpdate(false)
+        // mutation.mutate({...text, miniGallery1: coverUrl, profilePic: profileUrl})
+        // setOpenUpdate(false)
     }
 
   return (

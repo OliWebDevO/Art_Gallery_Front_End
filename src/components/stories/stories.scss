@@ -5,10 +5,15 @@
     height: 40vh;
     display: grid;
     grid-template-columns: 
-    repeat(auto-fit, minmax(200px, 5fr));
+    repeat(auto-fit, minmax(230px, 4fr));
     gap: 2%;
     margin: 0 auto;
     overflow: scroll;
+    @media (min-width: 1700px) {
+        grid-template-columns: 
+        repeat(auto-fit, minmax(300px, 4fr));
+    }
+   
     &::-webkit-scrollbar{
         display: none;
         
