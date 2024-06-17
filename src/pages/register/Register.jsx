@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import './register.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Register = () => {
+
 
     const [inputs, setInputs] = useState({
         username:"",
@@ -12,7 +15,13 @@ const Register = () => {
         password:"",
         name:"",
     })
+
     const [error, setError] = useState(false)
+
+    const navigate = useNavigate()
+
+    // toastify
+    const notifyRegisterFail = () => toast("User already exists || Missing details");
 
     const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -20,11 +29,16 @@ const Register = () => {
 
     const handleClick = async (e) => {
         e.preventDefault()
-
+        if (!inputs.username || !inputs.password) {
+            notifyRegisterFail();
+            return;
+        }
         try {
             await axios.post('http://localhost:8800/api/auth/register', inputs)
+            navigate("/login")
         } catch(err) {
             setError(err.response.data)
+            notifyRegisterFail();
         }
     }
 
@@ -38,8 +52,8 @@ const Register = () => {
                         <input type="text" placeholder='Name' name='name' onChange={handleChange}/>
                         <input type='mail' placeholder='Email' name='email' onChange={handleChange}/>
                         <input type="password" placeholder='Password' name='password' onChange={handleChange}/>
-                        {error && <div className='error'>{error}</div>}
                         <button onClick={handleClick}>Register</button>
+                        <ToastContainer />
                         <Link to={'/login'}>
                         <button className='login-btn'>Login</button>
                         </Link>

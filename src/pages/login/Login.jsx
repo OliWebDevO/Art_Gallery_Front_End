@@ -2,7 +2,9 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/authContext';
 import './login.scss'
-
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 const Login = () => {
 
     const [inputs, setInputs] = useState({
@@ -10,6 +12,9 @@ const Login = () => {
         password:"",
     })
     const [error, setError] = useState(null)
+
+     // toastify
+     const notifyLoginFail = () => toast("Wrong password or username");
 
     const navigate = useNavigate()
 
@@ -25,6 +30,7 @@ const Login = () => {
             navigate("/")
         } catch (err){
             setError(err.response.data)
+            notifyLoginFail()
         }
     }
 
@@ -45,10 +51,9 @@ const Login = () => {
                     <form action="">
                         <input type="text" placeholder='Username' name='username' onChange={handleChange}/>
                         <input type="password" placeholder='Password' name='password' onChange={handleChange}/>
-                        {error && <div className='error'>{error}</div>}
-                        {/* <Link to ={'/'}> */}
+                        {/* {error && <div className='error'>{error}</div>} */}
                         <button onClick={handleLogin}>Login</button>
-                        {/* </Link> */}
+                        <ToastContainer />
                         <Link to={'/register'}>
                         <button className='register-btn'>Register</button>
                         </Link>
