@@ -161,6 +161,9 @@ const Update = ({setOpenUpdate, user}) => {
                                 </label>
                                 <input type="file" name="miniGallery6" id="img6" onChange={e=>setImg6(e.target.files[0])} style={{display:'none'}} />
                             </div>
+                            
+                        </div>
+                        <div className="profile-desc">
                             <div className="form-box">
                                 <label htmlFor="name">
                                         <PersonIcon className='icon'/>
@@ -179,8 +182,6 @@ const Update = ({setOpenUpdate, user}) => {
                                 </label>
                                 <input type="text" name="website" id='website' placeholder='Your website' onChange={handleChange}/>
                             </div>
-                        </div>
-                        <div className="profile-desc">
                             <textarea type="text" name="desc" id="desc" placeholder='Your description' onChange={handleChange}/>
                         </div>
                     </div>   
