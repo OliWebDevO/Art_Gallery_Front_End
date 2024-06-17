@@ -24,7 +24,6 @@ const Stories = ({userId}) => {
         return res.data
       })
   })
-  console.log(data)
 
   //File upload function
   const uploadStory = async () => {
@@ -94,14 +93,6 @@ const Stories = ({userId}) => {
     )
 }
 export default Stories
-
-
-
-
-
-
-
-
 
 
 // {data.map(story => (

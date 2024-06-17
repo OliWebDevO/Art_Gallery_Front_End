@@ -59,6 +59,7 @@ const Profile = () => {
             return res.data
         })
     })
+
     const { isPending: relationshipIsPending, data: relationshipData } = useQuery({
         initialData:[],
         queryKey: ['relationship'],

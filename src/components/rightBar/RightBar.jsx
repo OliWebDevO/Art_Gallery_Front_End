@@ -1,10 +1,26 @@
 import './rightbar.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import img1 from '../../assets/art1.jpeg'
 import ClearIcon from '@mui/icons-material/Clear';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { useQuery } from '@tanstack/react-query';
+import { makeRequest } from '../../axios';
 const RightBar = () => {
+
+
+        // React Query pour le profil
+        const { isPending, error, data } = useQuery({
+            initialData:[],
+            queryKey: ['userslist'],
+            queryFn: () =>
+            makeRequest.get("/userslist").then((res) => {
+                return res.data
+            })
+        })
+        console.log(data)
+
     return (
+
         <div className='rightbar'>
             <div className="container">
                 <div className="suggestions box">
