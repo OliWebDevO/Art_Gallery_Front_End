@@ -6,6 +6,9 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Story } from '../story/Story';
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Stories = ({userId}) => {
 
@@ -46,6 +49,9 @@ const Stories = ({userId}) => {
       queryClient.invalidateQueries({ queryKey: ['stories'] })
     },
   })
+
+  const notifyStoryShared = () => toast("Story shared");
+
   const handleSend = async (e) => {
     e.preventDefault()
     //On apporte le file avec la fct upload de muller
@@ -55,6 +61,7 @@ const Stories = ({userId}) => {
     //On amène la mutation de react query
     mutation.mutate({img: imgStoryUrl})
     setFileStory(null)
+    notifyStoryShared()
   }
   const handleCancel = (e) => {
     e.preventDefault()
@@ -82,6 +89,7 @@ const Stories = ({userId}) => {
             : data.map(story => (
               <Story story={story} key={story.id}/>
             ))}
+            <ToastContainer/>
         </div>
     )
 }

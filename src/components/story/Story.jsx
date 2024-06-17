@@ -6,11 +6,15 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import ClearIcon from '@mui/icons-material/Clear';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const Story = ({story}) => {
     console.log(story)
 
   const {currentUser} = useContext(AuthContext)
+
+  const notifyStoryDeleted = () => toast("Story deleted");
 
   //React Query
   const queryClient = useQueryClient()
@@ -26,6 +30,7 @@ export const Story = ({story}) => {
 })
 const handleDelete = () => {
     deleteStoryMutation.mutate(story.id)
+    notifyStoryDeleted();
 }
   return (
         <div className='story' key={story.id}>
