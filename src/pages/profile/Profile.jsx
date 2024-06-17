@@ -29,6 +29,9 @@ import Update from '../../components/update/Update';
 import { Share } from '../../components/share/Share';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SyncIcon from '@mui/icons-material/Sync';
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Profile = () => {
 
@@ -247,6 +250,7 @@ const Profile = () => {
             </div>
             </>)}
             {openUpdate && <Update setOpenUpdate={setOpenUpdate} user={data}/>}
+            <ToastContainer/>
         </div>
     )
 }

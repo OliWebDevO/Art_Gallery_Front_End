@@ -6,7 +6,8 @@ import { makeRequest } from '../../axios';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import React from 'react'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const Share = () => {
 
@@ -41,6 +42,9 @@ export const Share = () => {
   const [file, setFile] = useState(null)
   const [desc, setDesc] = useState("")
 
+  // toastify
+  const notifyPostShared = () => toast("Post shared");
+
   const handleClick = async (e) => {
     e.preventDefault()
     //On apporte le file avec la fct upload de muller
@@ -51,6 +55,7 @@ export const Share = () => {
     mutation.mutate({desc, img: imgUrl})
     setDesc("")
     setFile(null)
+    notifyPostShared()
   }
 
   return (

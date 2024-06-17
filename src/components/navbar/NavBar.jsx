@@ -18,6 +18,8 @@ const NavBar = () => {
     const {toggle, darkMode} = useContext(DarkModeContext)
     const {currentUser} = useContext(AuthContext)
 
+    const notifyLogOut = () => toast("You have logged out");
+
     const handleLogout = () => {
         localStorage.clear();
         location.reload()

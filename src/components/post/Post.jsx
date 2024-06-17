@@ -12,6 +12,8 @@ import moment from "moment";
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { AuthContext } from '../../context/authContext';
 import { makeRequest } from '../../axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Post = ({ post }) => {
     
@@ -25,7 +27,6 @@ const Post = ({ post }) => {
         rotation === "iconRotation" && setRotation("")
         setMenuOpen(!menuOpen)
     }
-
 
      // React Query pour les likes
      const { isPending, error, data } = useQuery({
@@ -51,7 +52,6 @@ const Post = ({ post }) => {
         },
     })
 
-
     const handleLike = () => {
         mutation.mutate(data.includes(currentUser.id))
     }
@@ -66,8 +66,13 @@ const Post = ({ post }) => {
             queryClient.invalidateQueries({ queryKey: ['posts'] })
         },
     })
+
+    // toastify
+    const notifyPostDelete = () => toast("Post deleted");
+
     const handleDelete = () => {
         deleteMutation.mutate(post.id)
+        notifyPostDelete()
     }
 
     return (

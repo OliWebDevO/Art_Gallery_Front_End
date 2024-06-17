@@ -7,6 +7,8 @@ import WebIcon from '@mui/icons-material/Web';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ClearIcon from '@mui/icons-material/Clear';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Update = ({setOpenUpdate, user}) => {
     
@@ -54,6 +56,9 @@ const Update = ({setOpenUpdate, user}) => {
     },
     })
 
+    // toastify
+    const notifyProfileUpdate = () => toast("Profile updated");
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         //On apporte le file avec la fct upload de muller
@@ -90,6 +95,7 @@ const Update = ({setOpenUpdate, user}) => {
         //On amène la mutation de react query
         mutation.mutate(updatedData)
         setOpenUpdate(false)
+        notifyProfileUpdate()
         // mutation.mutate({...text, miniGallery1: coverUrl, profilePic: profileUrl})
         // setOpenUpdate(false)
     }
