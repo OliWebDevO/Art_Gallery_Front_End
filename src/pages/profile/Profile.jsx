@@ -53,7 +53,7 @@ const Profile = () => {
     // React Query pour le profil
     const { isPending, error, data } = useQuery({
         initialData:[],
-        queryKey: ['user'],
+        queryKey: ['user', userId],
         queryFn: () =>
         makeRequest.get("/users/find/" + userId).then((res) => {
             return res.data
@@ -68,8 +68,6 @@ const Profile = () => {
             return res.data
         })
     })
-
-
 
     //React Query
     const queryClient = useQueryClient()
@@ -145,7 +143,10 @@ const Profile = () => {
 
     return (
         <div className='profile'>
-            {isPending ? "Loading " :
+            {error 
+            ? 'Something went wront' 
+            : isPending 
+            ? 'Loading' :
             (<>
             <div className="profile-container">
                 <div className="profile-banner">

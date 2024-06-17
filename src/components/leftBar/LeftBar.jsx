@@ -19,17 +19,12 @@ const LeftBar = () => {
     const {currentUser} = useContext(AuthContext);
     const {toggle, darkMode} = useContext(DarkModeContext)
 
-    const handleClick = () => {
-        setTimeout(() => {
-            location.reload();
-          }, "1");
-    }
-
+ 
     return (
         <div className='leftbar'>
             <div className="container">
                 <div className="menu">
-                    <Link className="user" onClick={handleClick} to={`/profile/`+ currentUser.id}>
+                    <Link className="user" to={`/profile/`+ currentUser.id}>
                         <img src={currentUser.profilePic === null ? profilePicBasic : '/upload/' + currentUser.profilePic} alt="" />
                         <span>My profile</span>
                     </Link>

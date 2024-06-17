@@ -18,17 +18,12 @@ const NavBar = () => {
     const {toggle, darkMode} = useContext(DarkModeContext)
     const {currentUser} = useContext(AuthContext)
 
-    const notifyLogOut = () => toast("You have logged out");
 
     const handleLogout = () => {
         localStorage.clear();
         location.reload()
     }
-    const handleClick = () => {
-        setTimeout(() => {
-            location.reload();
-          }, "1");
-    }
+
 
     return (
         <div className="nav-bg">
@@ -48,12 +43,12 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <Link className="user link" onClick={handleClick} to={`/profile/`+ currentUser.id}>
+                    <Link className="user link"  to={`/profile/`+ currentUser.id}>
                         <PermIdentityIcon className='icon profile-i'/>
                     </Link>
                     <MailOutlineIcon className='icon mail-i'/>
                     <NotificationsNoneIcon className='icon notif-i'/>
-                    <Link className="user link" onClick={handleClick} to={`/profile/`+ currentUser.id}>
+                    <Link className="user link" to={`/profile/`+ currentUser.id}>
                         <img className='u-buble' src={currentUser.profilePic === null ? profilePicBasic : '/upload/' + currentUser.profilePic} alt="" />
                         <span>{currentUser.name}</span>
                     </Link>
