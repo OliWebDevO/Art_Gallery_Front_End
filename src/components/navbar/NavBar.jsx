@@ -12,6 +12,7 @@ import { useContext } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 import { AuthContext } from '../../context/authContext';
 import LogoutIcon from '@mui/icons-material/Logout';
+import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 const NavBar = () => {
 
     const {toggle, darkMode} = useContext(DarkModeContext)
@@ -51,7 +52,7 @@ const NavBar = () => {
                     <MailOutlineIcon className='icon mail-i'/>
                     <NotificationsNoneIcon className='icon notif-i'/>
                     <Link className="user link" onClick={handleClick} to={`/profile/`+ currentUser.id}>
-                        <img className='u-buble' src={'/upload/' + currentUser.profilePic} alt="" />
+                        <img className='u-buble' src={currentUser.profilePic === null ? profilePicBasic : '/upload/' + currentUser.profilePic} alt="" />
                         <span>{currentUser.name}</span>
                     </Link>
                     <LogoutIcon className='icon' onClick={handleLogout}/>

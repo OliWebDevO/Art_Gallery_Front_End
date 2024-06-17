@@ -19,6 +19,8 @@ import imgMiniGallery3 from '../../assets/gallery/gallery32.jpeg'
 import imgMiniGallery4 from '../../assets/gallery/gallery60.jpeg'
 import imgMiniGallery5 from '../../assets/gallery/gallery4.jpeg'
 import imgMiniGallery6 from '../../assets/gallery/gallery40.jpeg'
+import profilePicBasic from '../../assets/profilePicBasic.jpeg'
+import coverPicBasic from '../../assets/coverPicBasic.webp'
 import ClearIcon from '@mui/icons-material/Clear';
 import { useLocation } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -143,8 +145,8 @@ const Profile = () => {
             (<>
             <div className="profile-container">
                 <div className="profile-banner">
-                    <img className='banner-pic' src={"/upload/" + data.coverPic} alt="" />
-                    <img className='profile-pic' src={"/upload/" + data.profilePic} alt="" />
+                    <img className='banner-pic' src={data.coverPic === null ? coverPicBasic : "/upload/" + data.coverPic} alt="" />
+                    <img className='profile-pic' src={data.profilePic === null ? profilePicBasic :"/upload/" + data.profilePic} alt="" />
                 </div>
                 <div className="profile-infos">
                     <div className="profile-title">

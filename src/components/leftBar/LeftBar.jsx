@@ -12,6 +12,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 
 const LeftBar = () => {
 
@@ -29,7 +30,7 @@ const LeftBar = () => {
             <div className="container">
                 <div className="menu">
                     <Link className="user" onClick={handleClick} to={`/profile/`+ currentUser.id}>
-                        <img src={'/upload/' + currentUser.profilePic} alt="" />
+                        <img src={currentUser.profilePic === null ? profilePicBasic : '/upload/' + currentUser.profilePic} alt="" />
                         <span>My profile</span>
                     </Link>
                     <div className="item">
