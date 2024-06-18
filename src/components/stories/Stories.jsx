@@ -88,7 +88,6 @@ const Stories = ({userId}) => {
             : data.map(story => (
               <Story story={story} key={story.id}/>
             ))}
-            <ToastContainer/>
         </div>
     )
 }
