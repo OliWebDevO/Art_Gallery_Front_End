@@ -9,7 +9,7 @@ import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 
 const RightBar = () => {
 
-        // React Query pour le profil
+        // React Query pour la liste d'amis
         const { isPending, error, data } = useQuery({
             initialData:[],
             queryKey: ['userslist'],
@@ -30,7 +30,7 @@ const RightBar = () => {
                     {isPending
                     ? "Loading"
                     : data.map((user) => (
-                        <div className="item">
+                        <div className="item" key={user.id}>
                                 <Link to={`/profile/${user.id}`}>
                                 <div className="img-box">
                                     <img className='item-icon' src={user.profilePic === null ? profilePicBasic : "/upload/" + user.profilePic} alt="" />

@@ -13,12 +13,24 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import profilePicBasic from '../../assets/profilePicBasic.jpeg'
+import { makeRequest } from '../../axios';
+import { useQuery } from '@tanstack/react-query';
 
 const LeftBar = () => {
 
     const {currentUser} = useContext(AuthContext);
     const {toggle, darkMode} = useContext(DarkModeContext)
 
+         // React Query pour la liste d'amis
+         const { isPending, error, data } = useQuery({
+            initialData:[],
+            queryKey: ['friends', currentUser.id],
+            queryFn: () =>
+            makeRequest.get("/friends", { params: { id: currentUser.id } }).then((res) => {
+                return res.data
+            })
+        })
+        console.log(data)
  
     return (
         <div className='leftbar'>
@@ -68,6 +80,22 @@ const LeftBar = () => {
                     <div className="item first-item">
                         <h4>Favorite artists</h4>
                     </div>
+                    {isPending
+                    ? "Loading"
+                    : data.map((user) => (
+                            <div className="item">
+                                   
+                                <Link to={`/profile/${user.id}`}>
+                                <img className='item-icon' src={user.profilePic === null ? profilePicBasic : "/upload/" + user.profilePic} alt="" />
+                                <div className='user-info'>
+                                    <span>{user.name}</span>
+                                    <span className='city'>{user.city}</span>
+                                </div>
+                                </Link>
+                            </div>
+
+                    ))}
+                  
                     <div className="item">
                         <img className='item-icon' src={img1} alt="" />
                         <span>
