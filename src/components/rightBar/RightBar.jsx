@@ -9,7 +9,7 @@ import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 
 const RightBar = () => {
 
-        // React Query pour la liste d'amis
+        // React Query pour la liste des utilisateurs
         const { isPending, error, data } = useQuery({
             initialData:[],
             queryKey: ['userslist'],
