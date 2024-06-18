@@ -1,10 +1,10 @@
 @import "../../style.scss";
-.gallery {
+.home {
     @include themify($themes) {
     background-color: themed('bgSoft');
     color: themed('textColor');
     width: 60vw;
-    padding: 1.9ch 7ch;
+    padding: 3.5ch 7ch;
     display: flex;
     flex-direction: column;
     gap: 4ch;

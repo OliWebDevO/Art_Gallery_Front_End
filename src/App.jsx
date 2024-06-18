@@ -21,6 +21,7 @@ import { AuthContext } from './context/authContext';
 //React Query import
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ScrollToTop from './components/scrolltotop/ScrollToTop';
+import Gallery from './pages/gallery/Gallery';
 
 
 
@@ -79,6 +80,10 @@ const ProtectedRoute = ({children}) => {
           // path:"/profile/" + currentUser.id,
           path:"/profile/:id",
           element:<Profile/>
+        },
+        {
+        path:"/gallery",
+        element:<Gallery/>
         }
       ]
     },

@@ -94,11 +94,12 @@
                 }
                 .user-info{
                     display: flex;
-                    align-items: end;
+                    align-items: center;
                     gap: 10px;
                     .city {
                         color: themed('textColorSoft');
                         font-size: 0.7rem;
+                        padding-top: 2px;
                     }
                 }
                 .img-box {

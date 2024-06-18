@@ -36,7 +36,9 @@ const NavBar = () => {
                         <HomeOutlinedIcon className='icon'/>
                     </Link>
                     {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
-                    <GridViewIcon className='icon'/>
+                    <Link className="link" to={`/gallery`}>
+                        <GridViewIcon className='icon'/>
+                    </Link>
                     <div className="search">
                         <SearchIcon/>
                         <input type="text" name="" id="" placeholder='Search...' />

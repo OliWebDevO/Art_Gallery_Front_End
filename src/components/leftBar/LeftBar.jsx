@@ -21,6 +21,7 @@ const LeftBar = () => {
     const {currentUser} = useContext(AuthContext);
     const {toggle, darkMode} = useContext(DarkModeContext)
 
+
          // React Query pour la liste d'amis
          const { isPending, error, data } = useQuery({
             initialData:[],
@@ -30,7 +31,6 @@ const LeftBar = () => {
                 return res.data
             })
         })
-        console.log(data)
  
     return (
         <div className='leftbar'>
@@ -46,12 +46,15 @@ const LeftBar = () => {
                             My gallery
                         </span>
                     </div>
+                    <Link className="link" to={`/gallery`}>
                     <div className="item">
                         <GridViewIcon className='icon'/>
                         <span>
                             General gallery
                         </span>
                     </div>
+                    </Link>
+                    
                     <div className="item">
                     {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
                         {darkMode?  <span onClick={toggle}>Switch to Light Mode</span> : <span onClick={toggle}>Switch to dark Mode</span>}
@@ -75,74 +78,28 @@ const LeftBar = () => {
                         </span>
                     </div>
                 </div>
-                <hr />
+            </div>
+            <div className="container">
                 <div className="menu">
-                    <div className="item first-item">
-                        <h4>Favorite artists</h4>
+                    <div className="item first-item artists">
+                        <h4>Followed artists</h4>
                     </div>
-                    {isPending
+                    {error 
+                    ? "Error"
+                    : isPending
                     ? "Loading"
                     : data.map((user) => (
+                        <Link className='user-link' key={user.id} to={`/profile/${user.id}`}>
                             <div className="item">
-                                   
-                                <Link to={`/profile/${user.id}`}>
                                 <img className='item-icon' src={user.profilePic === null ? profilePicBasic : "/upload/" + user.profilePic} alt="" />
                                 <div className='user-info'>
                                     <span>{user.name}</span>
                                     <span className='city'>{user.city}</span>
                                 </div>
-                                </Link>
                             </div>
-
+                        </Link>
                     ))}
-                  
-                    <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
-                    </div>
-                    <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
-                    </div>
-                    <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
-                    </div>
-                    <div className="item last-item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
-                    </div>
                 </div>
-                {/* <hr />
-                <div className="menu">
-                   
-                    <div className="item first-item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
-                    </div>
-                    <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
-                    </div>
-                    <div className="item">
-                        <img className='item-icon' src={img1} alt="" />
-                        <span>
-                            Friends
-                        </span>
-                    </div>
-                </div> */}
             </div>
         </div>
     )
