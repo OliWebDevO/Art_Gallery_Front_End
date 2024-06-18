@@ -29,13 +29,13 @@ const LeftBar = () => {
                         <span>My profile</span>
                     </Link>
                     <div className="item">
-                        <ColorLensIcon/>
+                        <ColorLensIcon className='icon'/>
                         <span>
                             My gallery
                         </span>
                     </div>
                     <div className="item">
-                        <GridViewIcon/>
+                        <GridViewIcon className='icon'/>
                         <span>
                             General gallery
                         </span>
@@ -45,19 +45,19 @@ const LeftBar = () => {
                         {darkMode?  <span onClick={toggle}>Switch to Light Mode</span> : <span onClick={toggle}>Switch to dark Mode</span>}
                     </div>
                     <div className="item">
-                        <MailOutlineIcon/>
+                        <MailOutlineIcon className='icon'/>
                         <span>
                             Messages
                         </span>
                     </div>
                     <div className="item">
-                        <NotificationsNoneIcon/>
+                        <NotificationsNoneIcon className='icon'/>
                         <span>
                             Notifications
                         </span>
                     </div>
                     <div className="item last-item">
-                        <CalendarMonthOutlinedIcon/>
+                        <CalendarMonthOutlinedIcon className='icon'/>
                         <span>
                             Events
                         </span>

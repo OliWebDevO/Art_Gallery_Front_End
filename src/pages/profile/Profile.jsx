@@ -62,7 +62,7 @@ const Profile = () => {
 
     const { isPending: relationshipIsPending, data: relationshipData } = useQuery({
         initialData:[],
-        queryKey: ['relationship'],
+        queryKey: ['relationship', userId],
         queryFn: () =>
         makeRequest.get("/relationships?followedUserId=" + userId).then((res) => {
             return res.data

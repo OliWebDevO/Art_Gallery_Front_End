@@ -6,6 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import ShareIcon from '@mui/icons-material/Share';
 import ClearIcon from '@mui/icons-material/Clear';
+import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 import { Link } from 'react-router-dom';
 import Comments from '../comments/Comments';
 import moment from "moment";
@@ -79,7 +80,7 @@ const Post = ({ post }) => {
         <div className="post">
             <div className="post-head">
                 <Link className='user-link' to={`/profile/${post.userId}`}>
-                    <img className='user-img' src={'/upload/' + post.profilePic} alt="" />
+                    <img className='user-img' src={post.profilePic === null ? profilePicBasic :'/upload/' + post.profilePic} alt="" />
                 </Link>
                 <div className="user-infos">
                     <div className="user-info">
