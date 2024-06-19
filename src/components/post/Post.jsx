@@ -22,7 +22,6 @@ const Post = ({ post }) => {
     const [rotation, setRotation] = useState("")
     const [commentOpen, setCommentOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-
     const handleClickParamsPost = () => {
         setRotation("iconRotation")
         rotation === "iconRotation" && setRotation("")
