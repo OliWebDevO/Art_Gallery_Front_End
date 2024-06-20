@@ -2,7 +2,7 @@
 body {
     @include themify($themes) {
         .app{
-            
+            overflow-y: hidden; /* Hide vertical scrollbar */
             background-color: themed('bgSoft')
         }
 

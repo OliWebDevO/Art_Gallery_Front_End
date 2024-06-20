@@ -53,3 +53,6 @@ $themes:(
         @content;
     }
 }
+body::-webkit-scrollbar  {
+        display: none;
+}
