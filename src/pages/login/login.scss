@@ -18,8 +18,8 @@
     }
    .card  {
     display: flex;
-    width: 50%;
-    height: 60vh;
+    width: 60%;
+    height: 70vh;
     border-radius: 10px;
     background-color: white;
     color: white;
@@ -28,6 +28,9 @@
         width: 100%;
     }
     @include tablet {
+        width: 100%;
+    }
+    @include smallscreen {
         width: 100%;
     }
     .left {

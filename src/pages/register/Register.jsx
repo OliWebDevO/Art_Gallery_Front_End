@@ -34,7 +34,8 @@ const Register = () => {
             return;
         }
         try {
-            await axios.post('http://localhost:8800/api/auth/register', inputs)
+            await axios.post('http://localhost:8080/api/auth/register', inputs)
+            // await axios.post('https://olivervdb.com/api/auth/register', inputs)
             navigate("/login")
         } catch(err) {
             setError(err.response.data)

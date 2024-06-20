@@ -7,8 +7,8 @@ export const AuthContextProvider = ({children}) => {
         JSON.parse(localStorage.getItem('user')) || null
     );
     const login = async (inputs) => {
-        // const res = await axios.post('http://localhost:8080/api/auth/login', inputs, {
-        const res = await axios.post('https://olivervdb.com/api/auth/login', inputs, {
+        const res = await axios.post('http://localhost:8080/api/auth/login', inputs, {
+        // const res = await axios.post('https://olivervdb.com/api/auth/login', inputs, {
             withCredentials: true,
         });
         setCurrentUser(res.data);
