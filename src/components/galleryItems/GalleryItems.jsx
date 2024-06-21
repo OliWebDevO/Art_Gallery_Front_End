@@ -14,8 +14,11 @@ import { useQuery } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import GalleryItem from '../galleryItem/GalleryItem';
 import { ShareGallery } from '../shareGallery/ShareGallery';
+import CommentIcon from '@mui/icons-material/Comment';
+import moment from "moment";
+import { Link } from 'react-router-dom';
 
-const Lightbox = ({ src, userProfilePic, userName, onClose, onPrev, onNext }) => {
+const Lightbox = ({ src, userProfilePic, userName, date, userId, onClose, onPrev, onNext }) => {
   const {currentUser} = useContext(AuthContext);
     const handlers = useSwipeable({
         onSwipedLeft: () => onNext(),
@@ -29,9 +32,19 @@ const Lightbox = ({ src, userProfilePic, userName, onClose, onPrev, onNext }) =>
           <img className='img-lb' src={"/upload/" + src} alt="Enlarged" />
           <button className="prev-button" onClick={onPrev}><NavigateBeforeIcon className='icon'/></button>
           <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
-           <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
-            <span className='img-username'>{userName}</span>
-            <div className="black-box"></div>
+           
+           
+            <div className="black-box">
+            <Link to={`/profile/` + userId} className="left-banner">
+              <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
+              <span className='img-username'>{userName}</span>
+              <span className='img-date'>{moment(date).fromNow()}</span>
+            </Link>
+            <div className="right-banner">
+              <FavoriteBorderIcon className='img-like'/>
+              <CommentIcon className='img-comment'/>
+            </div>
+            </div>
         </div>
       </div>
     );
@@ -94,8 +107,10 @@ const GalleryItems = ({userId}) => {
   {currentIndex !== null && data && (
     <Lightbox
       src={data[currentIndex].img}
+      date={data[currentIndex].createdAt}
       userProfilePic={data[currentIndex].profilePic}
       userName={data[currentIndex].name}
+      userId={data[currentIndex].userId}
       onClose={handleClose}
       onPrev={handlePrev}
       onNext={handleNext}
@@ -107,3 +122,28 @@ const GalleryItems = ({userId}) => {
 }
 
 export default GalleryItems
+
+
+
+
+// const Lightbox = ({ src, userProfilePic, userName, onClose, onPrev, onNext }) => {
+//   const {currentUser} = useContext(AuthContext);
+//     const handlers = useSwipeable({
+//         onSwipedLeft: () => onNext(),
+//         onSwipedRight: () => onPrev(),
+//         preventDefaultTouchmoveEvent: true,
+//         trackMouse: true, // Enable mouse swiping
+//       });
+//     return (
+//       <div className="lightbox" onClick={onClose} {...handlers}>
+//         <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+//           <img className='img-lb' src={"/upload/" + src} alt="Enlarged" />
+//           <button className="prev-button" onClick={onPrev}><NavigateBeforeIcon className='icon'/></button>
+//           <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
+//            <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
+//             <span className='img-username'>{userName}</span>
+//             <div className="black-box"></div>
+//         </div>
+//       </div>
+//     );
+//   };

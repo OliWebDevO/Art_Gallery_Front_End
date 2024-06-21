@@ -32,26 +32,39 @@
       max-height: 90vh;
       border-radius: 8px;
     }
-    .img-abs {
-      position: absolute;
-      z-index: 4;
-      bottom: 15px;
-      left: 15px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
-    .img-username {
-      position: absolute;
-      z-index: 4;
-      bottom: 28px;
-      left: 75px;
-      color: white;
-      font-size: 1rem;
-      font-weight: 300;
-    }
+    // .img-abs {
+    //   position: absolute;
+    //   z-index: 4;
+    //   bottom: 15px;
+    //   left: 15px;
+    //   width: 50px;
+    //   height: 50px;
+    //   border-radius: 50%;
+    // }
+    // .img-username {
+    //   position: absolute;
+    //   z-index: 4;
+    //   bottom: 28px;
+    //   left: 75px;
+    //   color: white;
+    //   font-size: 1rem;
+    //   font-weight: 300;
+    // }
+    // .img-like {
+    //     position: absolute;
+    //     z-index: 4;
+    //     bottom: 28px;
+    //     right: 55px;
+    //     color: white;
+    //     font-size: 1rem;
+    //     font-weight: 300;
+    // }
+
     .black-box {
       position: absolute;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       z-index: 3;
       bottom: 0;
       left: 0;
@@ -59,9 +72,58 @@
       height: 80px;
       background: rgba(0, 0, 0, 0.427);
       border-radius: 0 0 8px 8px;
-    
+      .right-banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-right: 25px;
+      }
+      .left-banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-left: 25px;
+        text-decoration: none;
+      }
     }
   }
+
+  .img-abs {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    }
+    .img-username {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    }
+    .img-date {
+    color: rgba(255, 255, 255, 0.839);
+    padding-top: 2px;
+    }
+    .img-like {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.347);
+    border-radius: 50%;
+    cursor: pointer;
+    }
+    .img-comment {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.347);
+    border-radius: 50%;
+    cursor: pointer;
+    }
   
   .prev-button, .next-button {
     position: absolute;
