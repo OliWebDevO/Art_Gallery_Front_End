@@ -4,7 +4,7 @@
 .update-bg {
     @include themify($themes) {
            
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -17,8 +17,8 @@
     color: themed('textColor');
         .update-container{
             margin: 5% auto;
-            width: 50%;
-            height: 65%;
+            width: 50vw;
+            height: 65vh;
             padding: 50px;
             border-radius: 8px;
             background-color: themed('bgSoft');
@@ -60,13 +60,52 @@
                     flex-direction: column;
                     width: 100%;
                     gap: 25px;
-                    .form-box {
+                    .update-gallery {
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
                         display: flex;
+                        justify-content: center;   
+                        align-items: center; 
                         gap: 10px;
                         align-items: center;
                         margin-bottom: 25px;
                         @media (max-width: 950px) {
                             width: calc(100% + 20px)
+                        }
+                        .img-gallery {
+                            max-width: 50vw;
+                            max-height: 50vh;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                        .icon-abs {
+                            position: absolute;
+                            height: 80px;
+                            width: 80px;
+                            left:0;
+                            right:0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                            color: white;
+                        }
+                        .img-abs-update {
+                                position: absolute;
+                                left:0;
+                                top: 50%;
+                                right: 0;
+                                margin:auto;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            .fileStory {
+                                max-width: 70vw;
+                                max-height: 50vh;
+                                object-fit: cover;
+                                object-position: center;
+                                border-radius: 8px;
+                            }
                         }
                         input {
                             width: calc(80% - 34px);
@@ -85,6 +124,11 @@
                         }
                     }
                     button {
+                        position: absolute;
+                        position: absolute;
+                        left:37%;
+                        top: 0;
+                        right: 0;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -99,6 +143,9 @@
                             &:hover {
                                 background-color: rgba(49, 49, 179, 0.575);
                             }
+                        }
+                        .cancel {
+                            left:50%;
                         }
                     .profile-update-box {
                             display: flex;

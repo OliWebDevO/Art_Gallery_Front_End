@@ -11,8 +11,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import imgMiniGallery6 from '../../assets/gallery/gallery40.jpeg'
 
+
 const UpdateGallery = ({setOpenUpdate}) => {
     
+  const notifyGalleryShared = () => toast("Image shared");
 
   const [fileGallery, setFileGallery] = useState(null)
   const [title, setTitle] = useState('')
@@ -53,12 +55,12 @@ const UpdateGallery = ({setOpenUpdate}) => {
 
    //On amène la mutation de react query
    mutation.mutate({img: imgGalleryUrl})
-   setFileStory(null)
-   notifyStoryShared()
+   setFileGallery(null)
+   notifyGalleryShared()
  }
  const handleCancel = (e) => {
    e.preventDefault()
-   setFileStory(null)
+   setFileGallery(null)
  }
 
 
@@ -71,21 +73,24 @@ const UpdateGallery = ({setOpenUpdate}) => {
             </div>
             <div className='update-form'>
                 <form action="">
-                <div className="story">
-                <img src="https://images.pexels.com/photos/240040/pexels-photo-240040.jpeg" alt="" />
-                <p>Your Story</p>
-                <div className='add'>
-                  <input type="file" name="" id="fileStory" style={{display:"none"}} onChange={(e) => setFileStory(e.target.files[0])}/>
-                  <label htmlFor="fileStory">
-                    <AddCircleOutlineIcon className='icon'/>
-                  </label>
-                </div>
-                {fileStory && <div className="img-abs">
-                  <img className='fileStory' src={URL.createObjectURL(fileStory)} alt="" />
-                </div>}
-                {fileStory && <button className='share' onClick={handleSend}>Share</button>}
-                {fileStory && <button className='cancel' onClick={handleCancel}>Cancel</button>}
-            </div>
+                    <div className="update-gallery">
+                    {fileGallery === null && 
+                        <>
+                            <img className='img-gallery' src={imgMiniGallery6} alt="" />
+                            <div className='add'>
+                                <input type="file" name="" id="fileStory" style={{display:"none"}} onChange={(e) => setFileGallery(e.target.files[0])}/>
+                                <label htmlFor="fileStory">
+                                    <AddCircleOutlineIcon className='icon icon-abs'/>
+                                </label>
+                            </div>
+                        </>
+                        }
+                        {fileGallery && <div className="img-abs-update">
+                            <img className='fileStory' src={URL.createObjectURL(fileGallery)} alt="" />
+                            </div>}
+                        {fileGallery && <button className='share' onClick={handleSubmit}>Share</button>}
+                        {fileGallery && <button className='cancel' onClick={handleCancel}>Cancel</button>}
+                    </div>
                 </form>
             </div>
         </div>

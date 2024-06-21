@@ -15,7 +15,7 @@ import { makeRequest } from '../../axios';
 import GalleryItem from '../galleryItem/GalleryItem';
 import { ShareGallery } from '../shareGallery/ShareGallery';
 
-const Lightbox = ({ src, onClose, onPrev, onNext }) => {
+const Lightbox = ({ src, userProfilePic, userName, onClose, onPrev, onNext }) => {
   const {currentUser} = useContext(AuthContext);
     const handlers = useSwipeable({
         onSwipedLeft: () => onNext(),
@@ -26,11 +26,11 @@ const Lightbox = ({ src, onClose, onPrev, onNext }) => {
     return (
       <div className="lightbox" onClick={onClose} {...handlers}>
         <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-          <img className='img-lb' src={src} alt="Enlarged" />
+          <img className='img-lb' src={"/upload/" + src} alt="Enlarged" />
           <button className="prev-button" onClick={onPrev}><NavigateBeforeIcon className='icon'/></button>
           <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
-           <img src={'/upload/' + currentUser.profilePic} className='img-abs' alt="" />
-            <span className='img-username'>{currentUser.name}</span>
+           <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
+            <span className='img-username'>{userName}</span>
             <div className="black-box"></div>
         </div>
       </div>
@@ -94,6 +94,8 @@ const GalleryItems = ({userId}) => {
   {currentIndex !== null && data && (
     <Lightbox
       src={data[currentIndex].img}
+      userProfilePic={data[currentIndex].profilePic}
+      userName={data[currentIndex].name}
       onClose={handleClose}
       onPrev={handlePrev}
       onNext={handleNext}

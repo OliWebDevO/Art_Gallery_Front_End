@@ -26,8 +26,8 @@ import { AuthContext } from '../../context/authContext';
               key={galleryItem.id}
             >
               <img
-                srcSet={`${galleryItem.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                src={`${galleryItem.img}?w=248&fit=crop&auto=format`}
+                srcSet={`${"/upload/" + galleryItem.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={`${"/upload/" + galleryItem.img}?w=248&fit=crop&auto=format`}
                 alt={galleryItem.desc}
                 loading="lazy"
                 
