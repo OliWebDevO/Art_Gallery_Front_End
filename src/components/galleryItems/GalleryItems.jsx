@@ -10,40 +10,67 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useSwipeable } from 'react-swipeable';
 import './galleryItems.scss'
 import { AuthContext } from '../../context/authContext';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import GalleryItem from '../galleryItem/GalleryItem';
 import { ShareGallery } from '../shareGallery/ShareGallery';
 import CommentIcon from '@mui/icons-material/Comment';
+import ClearIcon from '@mui/icons-material/Clear';
 import moment from "moment";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import { Link } from 'react-router-dom';
 
-const Lightbox = ({ src, userProfilePic, userName, date, userId, onClose, onPrev, onNext }) => {
-  const {currentUser} = useContext(AuthContext);
+const Lightbox = ({ src, userProfilePic, userName, date, data, userId, onClose, onPrev, onNext }) => {
+
+    const {currentUser} = useContext(AuthContext);
+
+
     const handlers = useSwipeable({
         onSwipedLeft: () => onNext(),
         onSwipedRight: () => onPrev(),
         preventDefaultTouchmoveEvent: true,
         trackMouse: true, // Enable mouse swiping
       });
+
+      //React Query
+    const queryClient = useQueryClient()
+      // Mutations for gallery delete
+    const deleteMutation = useMutation({
+      mutationFn: (galleryId) => {
+          return makeRequest.delete('/gallery/'+ galleryId)
+      },
+      onSuccess: () => {
+          // Invalidate and refetch
+          queryClient.invalidateQueries({ queryKey: ['galleryItems'] })
+      },
+  })
+
+  // toastify
+  const notifyGalleryDelete = () => toast("Image deleted");
+
+  const handleDelete = () => {
+      deleteMutation.mutate(data.id)
+      notifyGalleryDelete()
+      onClose()
+  }
     return (
       <div className="lightbox" onClick={onClose} {...handlers}>
         <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
           <img className='img-lb' src={"/upload/" + src} alt="Enlarged" />
           <button className="prev-button" onClick={onPrev}><NavigateBeforeIcon className='icon'/></button>
           <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
-           
-           
             <div className="black-box">
-            <Link to={`/profile/` + userId} className="left-banner">
-              <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
-              <span className='img-username'>{userName}</span>
-              <span className='img-date'>{moment(date).fromNow()}</span>
-            </Link>
-            <div className="right-banner">
-              <FavoriteBorderIcon className='img-like'/>
-              <CommentIcon className='img-comment'/>
-            </div>
+              <Link to={`/profile/` + userId} className="left-banner">
+                <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
+                <span className='img-username'>{userName}</span>
+                <span className='img-date'>{moment(date).fromNow()}</span>
+              </Link>
+              <div className="right-banner">
+                <FavoriteBorderIcon className='img-like'/>
+                <CommentIcon className='img-comment'/>
+              </div>
+              {currentUser.id === userId && <ClearIcon onClick={handleDelete} className='clear'/>}
             </div>
         </div>
       </div>
@@ -55,7 +82,6 @@ const GalleryItems = ({userId}) => {
   const {currentUser} = useContext(AuthContext);
     const [currentIndex, setCurrentIndex] = useState(null);
 
-  
     const handleClick = (index) => {
       setCurrentIndex(index);
     };
@@ -111,6 +137,7 @@ const GalleryItems = ({userId}) => {
       userProfilePic={data[currentIndex].profilePic}
       userName={data[currentIndex].name}
       userId={data[currentIndex].userId}
+      data = {data[currentIndex]}
       onClose={handleClose}
       onPrev={handlePrev}
       onNext={handleNext}

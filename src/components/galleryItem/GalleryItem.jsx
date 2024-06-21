@@ -10,14 +10,14 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useSwipeable } from 'react-swipeable';
 import './galleryItem.scss'
 import { AuthContext } from '../../context/authContext';
-
+import { useMutation } from '@tanstack/react-query';
+import ClearIcon from '@mui/icons-material/Clear';
 
   const GalleryItem = ({galleryItem, onClick}) => {
 
     const {currentUser} = useContext(AuthContext);
     const [currentIndex, setCurrentIndex] = useState(null);
-
-  
+    
     return (
             <ImageListItem
 
@@ -43,8 +43,9 @@ import { AuthContext } from '../../context/authContext';
                 
               </IconButton>
             }
+            
           />
-
+            {/* {currentUser.id === galleryItem.userId && <ClearIcon onClick={handleDelete} className='clear'/>} */}
             </ImageListItem>
 
 

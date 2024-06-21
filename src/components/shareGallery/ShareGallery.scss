@@ -100,9 +100,9 @@
 // }
 .clear {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    color: red;
+    bottom: 25px;
+    left: 0px;
+    color: rgba(255, 0, 0, 0.921);
     cursor: pointer;
     transition: .3s ease-in-out;
         &:hover {
