@@ -70,7 +70,7 @@ const Lightbox = ({ src, userProfilePic, userName, date, data, userId, onClose, 
                 <FavoriteBorderIcon className='img-like'/>
                 <CommentIcon className='img-comment'/>
               </div>
-              {currentUser.id === userId && <ClearIcon onClick={handleDelete} className='clear'/>}
+              {currentUser.id === userId && <ClearIcon onClick={handleDelete} className='clear-gallery'/>}
             </div>
         </div>
       </div>
