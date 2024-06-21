@@ -37,7 +37,6 @@ const Post = ({ post }) => {
             return res.data;
         })
     });
-
     //React Query
     const queryClient = useQueryClient()
     // Mutations for likes

@@ -8,107 +8,109 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useSwipeable } from 'react-swipeable';
-import './gallery.scss'
+import './galleryItem.scss'
 import { AuthContext } from '../../context/authContext';
 
 
-const Lightbox = ({ src, onClose, onPrev, onNext }) => {
-  const {currentUser} = useContext(AuthContext);
-    const handlers = useSwipeable({
-        onSwipedLeft: () => onNext(),
-        onSwipedRight: () => onPrev(),
-        preventDefaultTouchmoveEvent: true,
-        trackMouse: true, // Enable mouse swiping
-      });
-    return (
-      <div className="lightbox" onClick={onClose} {...handlers}>
-        <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-          <img className='img-lb' src={src} alt="Enlarged" />
-          <button className="prev-button" onClick={onPrev}><NavigateBeforeIcon className='icon'/></button>
-          <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
-           <img src={'/upload/' + currentUser.profilePic} className='img-abs' alt="" />
-            <span className='img-username'>{currentUser.name}</span>
-            <div className="black-box"></div>
-        </div>
-      </div>
-    );
-  };
-
-  export default function GalleryComponent() {
+  const GalleryItem = ({galleryItem, onClick}) => {
 
     const {currentUser} = useContext(AuthContext);
     const [currentIndex, setCurrentIndex] = useState(null);
 
   
-    const handleClick = (index) => {
-      setCurrentIndex(index);
-    };
-  
-    const handleClose = () => {
-      setCurrentIndex(null);
-    };
-  
-    const handlePrev = () => {
-      setCurrentIndex((prevIndex) => (prevIndex === 0 ? itemData.length - 1 : prevIndex - 1));
-    };
-  
-    const handleNext = () => {
-      setCurrentIndex((prevIndex) => (prevIndex === itemData.length - 1 ? 0 : prevIndex + 1));
-    };
-  
     return (
-      <Box className='box'
-        sx={{
-          '& .MuiMasonryItem-root': {
-            width: '100%', // Use full width of the container
-          },
-          '& .MuiMasonryItem-root': {
-            height: '100%', // Use full width of the container
-          },
-        }}
-      >
-        <ImageList variant="masonry" cols={3} gap={8}>
-          {itemData.map((item, index) => (
             <ImageListItem
-              onClick={() => handleClick(index)}
+
+              onClick={() => onClick()}
               className="img"
-              key={item.id}
+              key={galleryItem.id}
             >
               <img
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                alt={item.title}
+                srcSet={`${galleryItem.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={`${galleryItem.img}?w=248&fit=crop&auto=format`}
+                alt={galleryItem.desc}
                 loading="lazy"
                 
               />
                <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
+            title={galleryItem.name}
+            // subtitle={galleryItem.name}
             actionIcon={
               <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
-              >
-                <FavoriteBorderIcon />
+                sx={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                aria-label={`info about ${galleryItem.desc}`}
+              > <div className='abs-up'>{galleryItem.desc}</div>
+                
               </IconButton>
             }
           />
-             
+
             </ImageListItem>
-          ))}
-        </ImageList>
-  
-        {currentIndex !== null && (
-          <Lightbox
-            src={itemData[currentIndex].img}
-            onClose={handleClose}
-            onPrev={handlePrev}
-            onNext={handleNext}
-          />
-        )}
-      </Box>
+
+
     );
   }
+
+  export default GalleryItem;
+
+
+
+
+//   return (
+//     <Box className='box'
+//       sx={{
+//         '& .MuiMasonryItem-root': {
+//           width: '100%', // Use full width of the container
+//         },
+//         '& .MuiMasonryItem-root': {
+//           height: '100%', // Use full width of the container
+//         },
+//       }}
+//     >
+//       <ImageList variant="masonry" cols={3} gap={8}>
+//         {itemData.map((item, index) => (
+//           <ImageListItem
+//             onClick={() => handleClick(index)}
+//             className="img"
+//             key={galle.id}
+//           >
+//             <img
+//               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+//               src={`${item.img}?w=248&fit=crop&auto=format`}
+//               alt={item.title}
+//               loading="lazy"
+              
+//             />
+//              <ImageListItemBar
+//           title={item.title}
+//           subtitle={item.author}
+//           actionIcon={
+//             <IconButton
+//               sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+//               aria-label={`info about ${item.title}`}
+//             >
+//               <FavoriteBorderIcon />
+//             </IconButton>
+//           }
+//         />
+           
+//           </ImageListItem>
+//         ))}
+//       </ImageList>
+
+//       {currentIndex !== null && (
+//         <Lightbox
+//           src={itemData[currentIndex].img}
+//           onClose={handleClose}
+//           onPrev={handlePrev}
+//           onNext={handleNext}
+//         />
+//       )}
+//     </Box>
+//   );
+// }
+
+// export default GalleryItem;
 
 const itemData = [
 
