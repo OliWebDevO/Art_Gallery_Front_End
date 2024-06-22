@@ -8,22 +8,26 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SearchIcon from '@mui/icons-material/Search';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 import { AuthContext } from '../../context/authContext';
 import LogoutIcon from '@mui/icons-material/Logout';
 import profilePicBasic from '../../assets/profilePicBasic.jpeg'
+import MenuIcon from '@mui/icons-material/Menu';
+import ClearIcon from '@mui/icons-material/Clear';
 const NavBar = () => {
 
     const {toggle, darkMode} = useContext(DarkModeContext)
     const {currentUser} = useContext(AuthContext)
-
+    const [openMenu, setOpenMenu] = useState(false)
 
     const handleLogout = () => {
         localStorage.clear();
         location.reload()
     }
-
+    const handleMenu = () => {
+        setOpenMenu(!openMenu)
+    }
 
     return (
         <div className="nav-bg">
@@ -32,18 +36,25 @@ const NavBar = () => {
                     <Link to={"/"} className='link'>
                         <div className="logo">Art Gallery</div>
                     </Link>
-                    <Link to={"/"} className='link'>
-                        <HomeOutlinedIcon className='icon'/>
-                    </Link>
                     {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
                     <Link className="link" to={`/gallery`}>
                         <GridViewIcon className='icon'/>
+                    </Link>
+                    <Link to={"/"} className='link'>
+                        <HomeOutlinedIcon className='icon'/>
                     </Link>
                     <div className="search">
                         <SearchIcon/>
                         <input type="text" name="" id="" placeholder='Search...' />
                     </div>
                 </div>
+                {openMenu === false
+                ? (<Link onClick={handleMenu} className=" small-menu " to={`/menu`}>
+                    <MenuIcon className='icon small-menu-icon'/>
+                </Link>)
+                : (<Link onClick={handleMenu} className=" small-menu " to={`/`}>
+                    <ClearIcon className='icon small-menu-icon'/>
+                </Link>)}
                 <div className="right">
                     <Link className="user link"  to={`/profile/`+ currentUser.id}>
                         <PermIdentityIcon className='icon profile-i'/>

@@ -60,7 +60,7 @@ const Profile = () => {
         })
     })
 
-    const { isPending: relationshipIsPending, data: relationshipData } = useQuery({
+    const { isPending : relationshipIsPending, data : relationshipData } = useQuery({
         initialData:[],
         queryKey: ['relationship', userId],
         queryFn: () =>
@@ -86,20 +86,6 @@ const Profile = () => {
 
     const handleFollow = () => {
         mutation.mutate(relationshipData.includes(currentUser.id))
-    }
-
-
-       //Part for mediaUpload of MiniGallery
-       //File upload function
-       const uploadMiniGallery = async (file) => {
-        try{
-        const formData = new FormData();
-        formData.append('file', file)
-        const res = await makeRequest.post('/upload', formData);
-        return res.data
-        }catch(err){
-        console.log(err)
-        }
     }
 
     //React Query pour l'update

@@ -23,7 +23,7 @@ import { AuthContext } from './context/authContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ScrollToTop from './components/scrolltotop/ScrollToTop';
 import Gallery from './pages/gallery/Gallery';
-
+import { Menu } from './pages/menu/Menu';
 
 
 // THE APP
@@ -91,6 +91,10 @@ const ProtectedRoute = ({children}) => {
           path:"/mygallery/:id",
           element:<MyGallery/>
         },
+        {
+          path: "/menu",
+          element: <Menu/>
+        },
       ]
     },
     {
@@ -101,6 +105,7 @@ const ProtectedRoute = ({children}) => {
       path: "/register",
       element: <Register/>
     },
+
   ]);
 
   // The App launch

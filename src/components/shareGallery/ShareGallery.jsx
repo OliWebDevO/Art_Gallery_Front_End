@@ -34,7 +34,7 @@ export const ShareGallery = () => {
                 />
                 
                  <ImageListItemBar
-              title="Share your Image"
+              title="Share"
               // subtitle={}
               actionIcon={
                 <IconButton

@@ -13,6 +13,19 @@
             text-decoration: none;
             color: themed('textColor');
         }
+        .small-menu {
+            @media (min-width: 520px) {
+                display: flex;
+            }
+            text-decoration: none;
+        }
+        .small-menu-icon {
+            margin-right: 20px;
+            @media (min-width: 520px) {
+                display: none;
+            }
+            color: themed('textColor');
+        }
         .icon {
             cursor: pointer;
             transition: .3s ease-in-out;
