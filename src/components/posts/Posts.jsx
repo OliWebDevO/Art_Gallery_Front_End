@@ -7,6 +7,7 @@ import { makeRequest } from '../../axios';
 
 const Posts = ({userId}) => {
   
+  
   // React Query pour les posts
   const { isPending, error, data } = useQuery({
     queryKey: ['posts'],
@@ -15,9 +16,7 @@ const Posts = ({userId}) => {
         return res.data
       })
   })
-  console.log(data)
-    return (
-      
+    return (  
         <div className="posts">
             { error 
             ? 'Something went wront' 

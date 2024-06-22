@@ -9,6 +9,7 @@ import LeftBar from './components/leftBar/LeftBar';
 import NavBar from './components/navbar/NavBar';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
+import MyGallery from './pages/myGallery/MyGallery';
 // React Router DOM functions
 import {
   createBrowserRouter,
@@ -84,7 +85,12 @@ const ProtectedRoute = ({children}) => {
         {
         path:"/gallery",
         element:<Gallery/>
-        }
+        },
+        {
+          // path:"/profile/" + currentUser.id,
+          path:"/mygallery/:id",
+          element:<MyGallery/>
+        },
       ]
     },
     {

@@ -7,6 +7,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ClearIcon from '@mui/icons-material/Clear';
+import './lightbox.scss'
 
  const Lightbox = ({ src, userProfilePic, userName, date, userId, onClose, onPrev, onNext }) => {
   
@@ -40,7 +41,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
   export default Lightbox
 
-
+ // Lightbox parameters 
 
 //   const [fileStory, setFileStory] = useState(null)
 
@@ -63,14 +64,16 @@ import ClearIcon from '@mui/icons-material/Clear';
 // };
 
 
-// <Lightbox
-// src={data[currentIndex].img}
-// date={data[currentIndex].createdAt}
-// userProfilePic={data[currentIndex].profilePic}
-// userName={data[currentIndex].name}
-// userId={data[currentIndex].userId}
-// data = {data[currentIndex]}
-// onClose={handleCloseLb}
-// onPrev={handlePrev}
-// onNext={handleNext}
-// />
+// {currentIndex !== null && data && (
+//     <Lightbox
+//       src={data[currentIndex].img}
+//       date={data[currentIndex].createdAt}
+//       userProfilePic={data[currentIndex].profilePic}
+//       userName={data[currentIndex].name}
+//       userId={data[currentIndex].userId}
+//       data = {data[currentIndex]}
+//       onClose={handleCloseLb}
+//       onPrev={handlePrev}
+//       onNext={handleNext}
+//     />
+//   )}

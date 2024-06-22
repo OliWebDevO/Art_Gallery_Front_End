@@ -15,6 +15,8 @@ import { AuthContext } from '../../context/authContext';
 import { makeRequest } from '../../axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import Lightbox from '../lightbox/Lightbox';
+import imgMiniGallery1 from '../../assets/gallery/gallery1.jpeg'
 
 const Post = ({ post }) => {
     
@@ -74,6 +76,26 @@ const Post = ({ post }) => {
         notifyPostDelete()
     }
 
+    // Lightbox parameters 
+
+      const [currentIndex, setCurrentIndex] = useState(null);
+
+      const handleClickLb = (index) => {
+      setCurrentIndex(index);
+    };
+
+    const handleCloseLb = () => {
+      setCurrentIndex(null);
+    };
+
+    const handlePrev = () => {
+      setCurrentIndex((prevIndex) => (prevIndex === 0 ? post.length - 1 : prevIndex - 1));
+    };
+
+    const handleNext = () => {
+      setCurrentIndex((prevIndex) => (prevIndex === post.length - 1 ? 0 : prevIndex + 1));
+    };
+
     return (
         <div className="post">
             <div className="post-head">
@@ -95,7 +117,7 @@ const Post = ({ post }) => {
             </div>
             <div className="post-content">
                 <p>{post.desc}</p>
-                <img src={'/upload/' + post.img} alt="" />
+                <img onClick={() => handleClickLb(index)} src={'/upload/' + post.img} alt="" />
                 <div className="post-reactions">
                     <div className="post-like">
                         {isPending ? "Loading" : data.includes(currentUser.id) ? (
@@ -116,6 +138,19 @@ const Post = ({ post }) => {
                 </div>
                 {commentOpen && <Comments postId={post.id}/>}
             </div>
+            {currentIndex !== null && post && (
+                <Lightbox
+                src={post.img}
+                date={post.createdAt}
+                userProfilePic={post.profilePic}
+                userName={post.name}
+                userId={post.userId}
+                data = {post}
+                onClose={handleCloseLb}
+                onPrev={handlePrev}
+                onNext={handleNext}
+                />
+            )}           
         </div>
     )
 }
