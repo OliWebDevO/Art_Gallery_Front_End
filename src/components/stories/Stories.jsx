@@ -5,15 +5,37 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import ClearIcon from '@mui/icons-material/Clear';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Story } from '../story/Story';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import Lightbox from '../lightbox/Lightbox';
+
 
 const Stories = ({userId}) => {
 
   const {currentUser} = useContext(AuthContext)
   const [fileStory, setFileStory] = useState(null)
+
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const handleClickLb = (index) => {
+  setCurrentIndex(index);
+};
+
+const handleCloseLb = () => {
+  setCurrentIndex(null);
+};
+
+const handlePrev = () => {
+  setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.length - 1 : prevIndex - 1));
+};
+
+const handleNext = () => {
+  setCurrentIndex((prevIndex) => (prevIndex === data.length - 1 ? 0 : prevIndex + 1));
+};
 
     // React Query pour les stories (get)
   const { isPending, error, data } = useQuery({
@@ -66,7 +88,7 @@ const Stories = ({userId}) => {
     e.preventDefault()
     setFileStory(null)
   }
-
+ console.log(data)
     return (
         <div className="stories">
             <div className="story">
@@ -85,9 +107,22 @@ const Stories = ({userId}) => {
                 {fileStory && <button className='cancel' onClick={handleCancel}>Cancel</button>}
             </div>
             {error ? 'Something went wrong' : isPending ? 'Loading'
-            : data.map(story => (
-              <Story story={story} key={story.id}/>
+            : data.map((story, index) => (
+              <Story story={story} key={story.id} onClick={() => handleClickLb(index)}/>
             ))}
+            {currentIndex !== null && data && (
+            <Lightbox
+              src={data[currentIndex].img}
+              date={data[currentIndex].createdAt}
+              userProfilePic={data[currentIndex].profilePic}
+              userName={data[currentIndex].name}
+              userId={data[currentIndex].userId}
+              data = {data[currentIndex]}
+              onClose={handleCloseLb}
+              onPrev={handlePrev}
+              onNext={handleNext}
+            />
+          )}
         </div>
     )
 }

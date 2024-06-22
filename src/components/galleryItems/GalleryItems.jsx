@@ -149,28 +149,3 @@ const GalleryItems = ({userId}) => {
 }
 
 export default GalleryItems
-
-
-
-
-// const Lightbox = ({ src, userProfilePic, userName, onClose, onPrev, onNext }) => {
-//   const {currentUser} = useContext(AuthContext);
-//     const handlers = useSwipeable({
-//         onSwipedLeft: () => onNext(),
-//         onSwipedRight: () => onPrev(),
-//         preventDefaultTouchmoveEvent: true,
-//         trackMouse: true, // Enable mouse swiping
-//       });
-//     return (
-//       <div className="lightbox" onClick={onClose} {...handlers}>
-//         <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-//           <img className='img-lb' src={"/upload/" + src} alt="Enlarged" />
-//           <button className="prev-button" onClick={onPrev}><NavigateBeforeIcon className='icon'/></button>
-//           <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
-//            <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
-//             <span className='img-username'>{userName}</span>
-//             <div className="black-box"></div>
-//         </div>
-//       </div>
-//     );
-//   };

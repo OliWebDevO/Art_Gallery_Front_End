@@ -7,9 +7,10 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import ClearIcon from '@mui/icons-material/Clear';
 import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css'
 
-export const Story = ({story}) => {
+export const Story = ({story, onClick}) => {
 
   const {currentUser} = useContext(AuthContext)
 
@@ -33,7 +34,7 @@ const handleDelete = () => {
 }
   return (
         <div className='story' key={story.id}>
-                  <img src={"/upload/" + story.img} alt="" />
+                  <img onClick={() => onClick()} src={"/upload/" + story.img} alt="" />
                   {story.userId === currentUser.id && <ClearIcon onClick={handleDelete} className='clear'/>}
         </div> 
   )
