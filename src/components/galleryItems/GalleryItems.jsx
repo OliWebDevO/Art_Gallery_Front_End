@@ -106,7 +106,6 @@ const GalleryItems = ({userId}) => {
           return res.data
         })
     })
-    console.log(data)
   return (
     <>
      <Box className='box'

@@ -1,0 +1,26 @@
+@import "../../style.scss";
+.my-gallery {
+    @include themify($themes) {
+    background-color: themed('bgSoft');
+    color: themed('textColor');
+    width: 60vw;
+    padding: 1.9ch 7ch;
+    display: flex;
+    flex-direction: column;
+    gap: 4ch;
+    min-height: 100vh;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    // @include mobile {
+    //     padding: 10px;
+    //     width: 100%;
+    // }
+    // @include tablet {
+    //     padding: 10px;
+    //     width: 100%;
+    // }
+    @include smallscreen {
+        padding: 10px;
+        width: 100%;
+    }
+}
+}

@@ -40,12 +40,14 @@ const LeftBar = () => {
                         <img src={currentUser.profilePic === null ? profilePicBasic : '/upload/' + currentUser.profilePic} alt="" />
                         <span>My profile</span>
                     </Link>
+                    <Link className="link" to={`/mygallery/`+ currentUser.id}>
                     <div className="item">
                         <ColorLensIcon className='icon'/>
                         <span>
                             My gallery
                         </span>
                     </div>
+                    </Link>
                     <Link className="link" to={`/gallery`}>
                     <div className="item">
                         <GridViewIcon className='icon'/>
