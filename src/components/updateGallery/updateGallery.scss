@@ -1,7 +1,7 @@
 @import "../../style.scss";
 
 
-.update-bg {
+.update-bg-gallery {
     @include themify($themes) {
            
     position: fixed;
@@ -123,8 +123,7 @@
                             }
                         }
                     }
-                    button {
-                        position: absolute;
+                    .share, .cancel {
                         position: absolute;
                         left:37%;
                         top: 0;
@@ -146,6 +145,11 @@
                         }
                         .cancel {
                             left:50%;
+                            background-color: rgba(179, 49, 56, 0.898);
+                            &:hover {
+                                background-color: rgba(179, 49, 56, 0.733);
+                            
+                            }
                         }
                     .profile-update-box {
                             display: flex;

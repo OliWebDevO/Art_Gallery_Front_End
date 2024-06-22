@@ -191,7 +191,7 @@ const Update = ({setOpenUpdate, user}) => {
                             <textarea type="text" name="desc" id="desc" placeholder='Your description' onChange={handleChange}/>
                         </div>
                     </div>   
-                    <button onClick={handleSubmit}>Update</button>
+                    <button className='button-update' onClick={handleSubmit}>Update</button>
                 </form>
             </div>
         </div>

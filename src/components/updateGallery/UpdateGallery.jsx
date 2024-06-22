@@ -65,7 +65,7 @@ const UpdateGallery = ({setOpenUpdate}) => {
 
 
   return (
-    <div className='update-bg'>
+    <div className='update-bg-gallery'>
         <div className="update-container">
             <div className="title">
                 <h2>Share your work</h2>

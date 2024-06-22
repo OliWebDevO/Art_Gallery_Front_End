@@ -25,8 +25,11 @@
             -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
             -moz-box-shadow : 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
             box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            @media (max-width: 1250px) {
+                height: 45%;
+            }
             @media (max-width: 900px) {
-                height: 63%;
+                height: 70%;
             }
             .title {
                 display: flex;
@@ -102,7 +105,7 @@
                             }
                         }
                     }
-                    button {
+                    .button-update {
                         display: flex;
                         justify-content: center;
                         align-items: center;

@@ -22,7 +22,7 @@ import imgMiniGallery6 from '../../assets/gallery/gallery40.jpeg'
 import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 import coverPicBasic from '../../assets/coverPicBasic.webp'
 import ClearIcon from '@mui/icons-material/Clear';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import Update from '../../components/update/Update';
@@ -169,9 +169,19 @@ const Profile = () => {
                                 ? 'Followed' 
                                 : 'Follow'}
                             </button>
-                            )}
-                            <MoreVertIcon className='icon'/>
-                            <MailOutlineIcon className='icon'/>
+                            )} { userId === currentUser.id ? (
+                                <Link className='link' to={'/mygallery/' + currentUser.id}
+                                ><button >My Gallery</button>
+                                </Link>
+                                ) : (
+                                <Link className='link' to={'/mygallery/' + userId}>
+                                <button>
+                                   Gallery
+                                </button>
+                                </Link>
+                                )}
+                            {/* <MoreVertIcon className='icon'/>
+                            <MailOutlineIcon className='icon'/> */}
                         </div>
                     </div>
                     <div className="profile-connect">

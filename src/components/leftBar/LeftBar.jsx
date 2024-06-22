@@ -38,13 +38,13 @@ const LeftBar = () => {
                 <div className="menu">
                     <Link className="user" to={`/profile/`+ currentUser.id}>
                         <img src={currentUser.profilePic === null ? profilePicBasic : '/upload/' + currentUser.profilePic} alt="" />
-                        <span>My profile</span>
+                        <span>My Profile</span>
                     </Link>
                     <Link className="link" to={`/mygallery/`+ currentUser.id}>
                     <div className="item">
                         <ColorLensIcon className='icon'/>
                         <span>
-                            My gallery
+                            My Gallery
                         </span>
                     </div>
                     </Link>
@@ -52,14 +52,14 @@ const LeftBar = () => {
                     <div className="item">
                         <GridViewIcon className='icon'/>
                         <span>
-                            General gallery
+                            Global Gallery
                         </span>
                     </div>
                     </Link>
                     
                     <div className="item">
                     {darkMode? <LightModeIcon className='icon' onClick={toggle}/> : <DarkModeOutlinedIcon className='icon' onClick={toggle}/>}
-                        {darkMode?  <span onClick={toggle}>Switch to Light Mode</span> : <span onClick={toggle}>Switch to dark Mode</span>}
+                        {darkMode?  <span onClick={toggle}>Switch to Light Mode</span> : <span onClick={toggle}>Switch to Dark Mode</span>}
                     </div>
                     <div className="item">
                         <MailOutlineIcon className='icon'/>
