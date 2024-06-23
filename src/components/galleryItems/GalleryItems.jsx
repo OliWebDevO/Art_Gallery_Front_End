@@ -7,6 +7,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 import { useSwipeable } from 'react-swipeable';
 import './galleryItems.scss'
 import { AuthContext } from '../../context/authContext';
@@ -62,7 +63,7 @@ const Lightbox = ({ src, userProfilePic, userName, date, data, userId, onClose, 
           <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
             <div className="black-box">
               <Link to={`/profile/` + userId} className="left-banner">
-                <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
+                <img src={userProfilePic === null ? profilePicBasic : '/upload/' + userProfilePic} className='img-abs' alt="" />
                 <span className='img-username'>{userName}</span>
                 <span className='img-date'>{moment(date).fromNow()}</span>
               </Link>

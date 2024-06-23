@@ -5,6 +5,7 @@ import moment from 'moment';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CommentIcon from '@mui/icons-material/Comment';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ClearIcon from '@mui/icons-material/Clear';
 import './lightbox.scss'
@@ -25,7 +26,7 @@ import './lightbox.scss'
           <button className="next-button" onClick={onNext}><NavigateNextIcon className='icon'/></button>
             <div className="black-box">
               <Link to={`/profile/` + userId} className="left-banner">
-                <img src={'/upload/' + userProfilePic} className='img-abs' alt="" />
+                <img src={userProfilePic === null ? profilePicBasic : '/upload/' + userProfilePic} className='img-abs' alt="" />
                 <span className='img-username'>{userName}</span>
                 <span className='img-date'>{moment(date).fromNow()}</span>
               </Link>
