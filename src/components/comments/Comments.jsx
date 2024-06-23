@@ -4,6 +4,7 @@ import { useContext, useState } from 'react'
 import {AuthContext} from '../../context/authContext'
 import { makeRequest } from '../../axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import profilePicBasic from '../../assets/profilePicBasic.jpeg'
 import moment from "moment";
 
 const Comments = ({postId}) => {
@@ -46,7 +47,7 @@ const Comments = ({postId}) => {
         <div className="comments">
             <div className="write-comment">
                 <div className="write-img">
-                    <img src={'/upload/' + currentUser.profilePic} alt="" />
+                    <img src={currentUser.profilePic === null ? profilePicBasic : '/upload/' + currentUser.profilePic} alt="" />
                 </div>
                 <input type="text" value={desc} name="" id="" placeholder='Write a comment' onChange={e => setDesc(e.target.value)} />
                 <button onClick={handleClick}>Send</button>
@@ -57,7 +58,7 @@ const Comments = ({postId}) => {
                 <div className="comment" key={comment.id}>
                     <div className="comment-img">
                         <Link className='comment-user' to={`/profile/${comment.userId}`}>
-                            <img src={'/upload/' + comment.profilePic} alt="" />
+                            <img src={comment.profilePic === null ? profilePicBasic : '/upload/' + comment.profilePic} alt="" />
                         </Link>
                     </div>
                     <div className="comment-content">         
